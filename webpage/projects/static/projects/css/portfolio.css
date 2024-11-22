@@ -1,0 +1,76 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.portfolio-page {
+    padding: 20px;
+}
+
+.content-container {
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 0 auto; /* Center the container */
+}
+
+.portfolio-page h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-align: left; /* Ensure the text is left-aligned */
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.project-item {
+    text-align: center; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; /* Optional: Add background color for better visibility */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
+}
+
+.project-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.project-item:hover {
+    transform: translateY(-10px) scale(1.05); /* Raise up and grow slightly */
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Enhance the shadow */
+}
+
+.portfolio-page ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.portfolio-page li {
+    margin-bottom: 20px;
+}
+
+.portfolio-page h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.portfolio-page p {
+    margin-bottom: 10px;
+}
+
+.portfolio-page a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.portfolio-page a:hover {
+    text-decoration: underline;
+}

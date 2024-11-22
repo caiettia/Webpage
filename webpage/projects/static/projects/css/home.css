@@ -1,0 +1,20 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.home-container {
+    background-image: url("https://raw.githubusercontent.com/caiettia/personal-site-work/refs/heads/main/img/header.jpg");
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Optional: Set text color for better visibility */
+    text-align: center; /* Optional: Center the text */
+    padding: 20px; /* Optional: Add padding */
+}

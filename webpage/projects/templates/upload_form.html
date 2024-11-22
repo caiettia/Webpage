@@ -1,0 +1,10 @@
+<!-- templates/admin/upload_form.html -->
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <h1>Upload new records</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+{% endblock %}
