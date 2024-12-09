@@ -29,6 +29,9 @@ body {
 }
 
 .project-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure space is distributed between elements */
     text-align: center; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -73,4 +76,61 @@ body {
 
 .portfolio-page a:hover {
     text-decoration: underline;
+}
+
+/* Style for the tags container */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between tags */
+    margin-bottom: 30px; /* Space below the tags container */
+}
+
+/* Style for individual tag links */
+.tags a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff; /* Background color for tags */
+    color: white; /* Text color for tags */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 0.9em; /* Font size for tags */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover effect for tag links */
+.tags a:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+
+/* Active state for selected tag */
+.tags a.active {
+    background-color: #b37a00; /* Darker background color for active tag */
+    font-weight: bold; /* Bold text for active tag */
+}
+
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Add space above the footer */
+}
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Space between tags */
+}
+
+.project-tags a {
+    font-size: 0.8em; /* Decreased font size for project item tags */
+    padding: 3px 8px; /* Adjust padding for smaller text */
+    background-color: #007bff; /* Background color for tags */
+    color: white; /* Text color for tags */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.project-link {
+    margin-left: auto; /* Push the link to the right */
 }

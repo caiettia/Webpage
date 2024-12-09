@@ -9,6 +9,12 @@
     <div class="portfolio-page">
         <div class="content-container">
             <h1>Portfolio</h1>
+            <div class="tags">
+                <a href="{% url 'portfolio' %}">All</a>
+                {% for tag in tags %}
+                    <a href="{% url 'projects_by_tag' tag.name %}">{{ tag.name }}</a>
+                {% endfor %}
+            </div>           
             <ul class="projects-container">
                 {% for project in projects %}
                     <li class="project-item">
@@ -17,7 +23,16 @@
                             <img src="{{ project.image_url }}" alt="{{ project.title }}">
                         {% endif %}
                         <p>{{ project.description }}</p>
-                        <a href="{{ project.github_url }}">GitHub Link</a>
+                        <div class="project-footer">
+                            <div class="project-tags">
+                                {% for tag in project.tags.all %}
+                                    <a href="{% url 'projects_by_tag' tag.name %}">{{ tag.name }}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="project-link">
+                                <a href="{{ project.github_url }}">GitHub Link</a>
+                            </div>
+                        </div>
                     </li>
                 {% endfor %}
             </ul>

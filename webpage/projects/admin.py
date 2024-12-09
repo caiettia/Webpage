@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project
+from .models import Project, Tag
 from django.http import HttpResponseRedirect
 from django.urls import path
 from django.shortcuts import render
@@ -22,3 +22,4 @@ class ProjectAdmin(admin.ModelAdmin):
     actions = [upload_records]
 
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(Tag)
