@@ -6,4 +6,5 @@ document.addEventListener('DOMContentLoaded', function() {
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('show');
     });
+
 });

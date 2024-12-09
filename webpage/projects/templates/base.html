@@ -23,9 +23,13 @@
         </nav>
     </header>
     <main>
-        {% block content %}
-        <!-- Page content will be injected here -->
-        {% endblock %}
+        <div class="page">
+            <div class = "page-content">
+                {% block content %}
+                <!-- Page content will be injected here -->
+                {% endblock %}
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Andrew's Site</p>
