@@ -44,6 +44,8 @@ nav {
 .nav-menu li a {
     color: rgb(0, 0, 0);
     text-decoration: none;
+    position: relative; /* Ensure the pseudo-element is positioned relative to the link */
+    transition: letter-spacing 0.3s ease-in-out; /* Add transition for letter-spacing */
 }
 
 .nav-menu li a::before {
@@ -56,7 +58,7 @@ nav {
     background: #fff;
     box-shadow: 1px 1px 1px #000;
     transform: scaleX(0);
-    transition: 400ms cubic-bezier(0.7, -0.6, 0.3, 1.2) transform;
+    transition: transform 0.3s ease-in-out; /* Adjusted transition for smoother animation */
 }
 
 .nav-menu li a:hover {
@@ -113,17 +115,24 @@ footer {
     align-items: center;
     color: rgb(19, 19, 19); /* Optional: Set text color for better visibility */
     text-align: center; /* Optional: Center the text */
-    padding: 20px; /* Optional: Add padding */
+    padding: 10px 20px; /* Reduce top padding to move content up */
 }
 
 .home-title {
     font-size: 4em; /* Set font size for the title */
     font-weight: 900; /* Make the title bold */
+    margin-top: 0; /* Reduce or remove the top margin */
     margin-bottom: 20px; /* Add space below the title */
+    position: relative; /* Use relative positioning */
+    top: -100px; /* Move the title up by 10px */
+    user-select: none; /* Prevent text selection */
 }
 
 .home-description {
     font-size: 1.5em; /* Set font size for the description */
     margin-bottom: 10px; /* Add space below the description */
     font-weight: 600; /* Set font weight for the description */
+    position: relative; /* Use relative positioning */
+    top: -100px; /* Move the description up by 100px */
+    user-select: none; /* Prevent text selection */
 }
