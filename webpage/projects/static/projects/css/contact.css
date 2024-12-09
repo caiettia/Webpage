@@ -1,0 +1,83 @@
+.contact-page{
+    display: flex;
+    margin-top: 40px;
+    justify-content: center; /* Center the container horizontally */
+    align-items: flex-start; /* Align the container vertically */
+    min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+    padding: 20px;
+}
+
+.contact-container {
+    max-width: 600px;
+    width: 40%;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.151); /* Subtle shadow */
+    text-align: center; /* Center the text */
+}
+
+.desc {
+    padding: 20px;
+    margin-right: 20px;
+    font-size: 1.2em;
+    color: #333; /* Darker text color */
+    text-align: left; /* Align text to the left */
+    max-width: 40%;
+}
+
+.social-icons {
+    margin-top: 20px; /* Add space above the social icons */
+}
+
+.social-icon {
+    margin-right: 10px; /* Space between icons */
+    font-size: 1.5em; /* Size of the icons */
+    color: #007bff; /* Color of the icons */
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.social-icon:hover {
+    color: #0056b3; /* Darker color on hover */
+}
+
+.contact-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.contact-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form elements horizontally */
+    gap: 15px; /* Space between form elements */
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    max-width: 90%; /* Ensure the inputs do not exceed the container width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.contact-container textarea {
+    height: 150px; /* Increase the height of the textarea */
+}
+.contact-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-container button:hover {
+    background-color: #0056b3;
+}

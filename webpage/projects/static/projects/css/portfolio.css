@@ -17,6 +17,7 @@ body {
 .portfolio-page h1 {
     font-size: 3em;
     margin-bottom: 20px;
+    color: #333;
     text-align: left; /* Ensure the text is left-aligned */
 }
 
@@ -62,6 +63,7 @@ body {
 
 .portfolio-page h2 {
     font-size: 1.5em;
+    color: #333;
     margin-bottom: 10px;
 }
 

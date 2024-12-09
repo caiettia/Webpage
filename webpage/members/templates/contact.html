@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Members{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'projects/css/contact.css' %}">
+    <div class = contact-page> 
+        <div class = "desc">
+            <h1>Contact Me</h1>
+            <p>If you would like to get in touch, please feel free to reach out to me here or on my socials. I look forward to hearing from you!</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/caiettia" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+        <div class = "contact-container">
+            <form method="post" action="https://formspree.io/f/mleajrzq">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
