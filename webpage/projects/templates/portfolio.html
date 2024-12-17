@@ -4,6 +4,7 @@
 
 {% block content %}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" type="text/css" href="{% static 'projects/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'projects/css/portfolio.css' %}">
     <div class="portfolio-page">
@@ -30,7 +31,9 @@
                                 {% endfor %}
                             </div>
                             <div class="project-link">
-                                <a href="{{ project.github_url }}">GitHub Link</a>
+                                <a href="{{ project.github_url }}" target="_blank" class="social-icon">
+                                    <i class="fab fa-github"></i>
+                                </a>
                             </div>
                         </div>
                     </li>
