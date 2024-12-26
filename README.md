@@ -4,5 +4,6 @@ Hello! Welcome to the github repo for my personal website. I chose to create my 
 # To Do
 ## Webpage
 * Configure github action for CI/CD with docker images
+* deploy to AWS instance (docker image) 
 * Explore webpage having a selection function to highlight a specific project (create a larger temporary window to see project info/github page?)
   
