@@ -12,6 +12,7 @@ WORKDIR /webpage
 COPY requirements.txt /webpage/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN pip install gunicorn
 
 # Copy the Django project
 COPY . /webpage/
@@ -23,4 +24,5 @@ COPY .env /webpage/
 EXPOSE 8000
 
 # Run the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "webpage.wsgi:application","--access-logfile","-", "--error-logfile","-"]
