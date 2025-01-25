@@ -8,13 +8,16 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory
 WORKDIR /webpage
 
-# Install dependencies
+## Install dependencies (pass)
 COPY requirements.txt /webpage/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Copy the Django project
 COPY . /webpage/
+
+# Copy the .env file
+COPY .env /webpage/
 
 # Expose the port the app runs on
 EXPOSE 8000
