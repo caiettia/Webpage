@@ -91,14 +91,16 @@ footer {
     }
 
     .nav-menu {
-        display: none;
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
         width: 100%;
+        justify-content: space-around;
     }
 
     .nav-menu li {
-        margin: 10px 0;
+        margin: 0;
         text-align: center;
+        flex: 1;
     }
 
     .nav-menu.show {
