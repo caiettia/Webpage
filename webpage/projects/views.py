@@ -14,3 +14,6 @@ def projects_by_tag(request, tag_name):
 
 def home(request):
     return render(request, 'home.html')
+
+def experience(request):
+    return render(request, 'experience.html')

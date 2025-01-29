@@ -9,4 +9,5 @@ urlpatterns = [
     path('portfolio/', include('projects.urls')),
     path('contact/', include('members.urls')),
     path('home/', projects_views.home, name='home'),
+    path('experience/', projects_views.experience, name='experience'),
 ]

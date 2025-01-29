@@ -1,0 +1,123 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Experience{% endblock %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'projects/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'projects/css/experience.css' %}">
+<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>-->
+<div class = "experience-layout">
+    <div class = "side-bar">
+        <div class="card-container">
+            <img class="round" src="{% static 'projects/images/headshot.jpg' %}" alt="user" />
+            <h3>Andrew Caietti</h3>
+            <h6>San Diego</h6>
+            <p>Analytics and Machine Learning <br/> solutions engineer</p>
+            <div class="buttons">
+            </div>
+            <div class="skills">
+                <h7>Skills</h7>
+                <ul>
+                    <li>Python</li>
+                    <li>Tableau</li>
+                    <li>AWS</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>SQL</li>
+                    <li>Git</li>
+                    <li>JavaScript</li>
+                    <li>Node</li>
+                    <li>R</li>
+                    <li>Salesforce</li>
+                    <li>Snowflake</li>
+                </ul>
+            </div>
+            <div class="education">
+                <h7>Education</h7>
+                <div class="education-items">
+                    <div class = "education-items-school">
+                        <img class="schoolpic" src="{% static 'projects/images/school.png' %}" alt="user" />
+                    </div>
+                    <ul>
+                        <li1>William & Mary</li1>
+                        <li2>BS in Applied Mathematics</li2>
+                        <li3>Honors, Cum Laude</li3>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class = "volunteer">
+            <h8>Volunteer Experience</h8>
+            <div class="volunteer-items-1">
+                <div class = "volunteer-items-1-pic">
+                    <img class="volunteer-pic-1" src="{% static 'projects/images/salesforce.svg' %}" alt="user" />
+                </div>
+                <div class = volunteer-items-text>
+                    <h9>Salesforce Foundation</h9>
+                    <h10>Pro-bono work with Big Picture Learning, an education non-profit, architecting AI Agent usecase and implementation.</h10>
+                </div>
+            </div>
+            <div class="volunteer-items-2">
+                <div class = "volunteer-items-2-pic">
+                    <img class="volunteer-pic-2" src="{% static 'projects/images/upchieve_logo.jpg' %}" alt="user" />
+                </div>
+                <div class = volunteer-items-text>
+                    <h9>Upchieve</h9>
+                    <h10>Tutor children virtually from underserved communities in mathematics.</h10>
+                </div>
+            </div>
+            <div class="volunteer-items-3">
+                <div class = "volunteer-items-3-pic">
+                    <img class="volunteer-pic-3" src="{% static 'projects/images/wm.png' %}" alt="user" />
+                </div>
+                <div class = volunteer-items-text>
+                    <h9>William & Mary</h9>
+                    <h10>Collaborated to design and execute William and Mary’s new student orientation program; Designed and executed Model UN conferences for Middle and High school students. </h10>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="timeline">
+        <li class="timeline-event">
+        <img src="{% static 'projects/images/salesforce.svg' %}" alt="Salesforce Logo" class="timeline-event-icon">
+        <div class="timeline-event-copy">
+            <p class="timeline-event-thumbnail">August 2021 - Today</p>
+            <h3>Senior Solutions Engineer</h3>
+            <h4>Salesforce</h4>
+            <p><strong>Technical Competency</strong><br>Architected analytics and machine learning solutions aligning enterprise customers’ business and IT requirements with the Salesforce Suite, integrating with enterprise systems such as Snowflake and Amazon S3.</p>
+            <p>Developed LLM-based Agents to increase enterprise customers’ case deflection by 32% by optimizing data pipelines and integrating LLM providers, including OpenAI, Anthropic, and custom fine-tuned models.</p>
+            <p>Developed Python-based tooling for Solutions and Architect teams to improve data quality of customer-facing product demonstrations through Salesforce APIs.</p>
+            <p><strong>Leadership & Collaboration</strong><br>Delivered over $6 million in ACV with +31% YoY growth, contributing to $36 million across Salesforce products.</p>
+            <p>Lead our Voice of the Customer program partnering with 10 Product Managers and 45 Solutions Engineers to prioritize product roadmap with customer feedback and quantify product feature requests.</p>
+            <p>Produced client workshops, proof of concepts, and product demonstrations for top enterprise and commercial manufacturing, automotive, and energy technical and executive audiences.</p>
+            <p>Lead technical enablement internally for over 150 Solutions Engineers on the technical backend and best practices of developing custom machine learning models, data visualization, and LLM-based Agents in Salesforce and Tableau.</p>
+            <p><strong>Public Speaking & Thought Leadership</strong><br>Presented at Dreamforce to a developer audience on architecting and building LLM-based Agents in Salesforce.</p>
+        </div>
+        </li>
+        <li class="timeline-event">
+        <img src="{% static 'projects/images/research.svg' %}" alt="Research Logo" class="timeline-event-icon">
+        <div class="timeline-event-copy">
+            <p class="timeline-event-thumbnail">October 2018 - May 2021</p>
+            <h3>Research Assistant</h3>
+            <h4>William & Mary Department of Mathematics</h4>
+            <p>Leveraged natural language processing techniques to classify text sentiment, optimizing transformer-based model performance by +29% in Python.</p>
+            <p>Developed SQLite3 relational database and schema, warehousing more than 50 columns and 400,000 rows of Clinical Trial and Twitter data for use in text classification and general research.</p>
+            <p>Applied mathematical models to simulate biological interactions between neurons in Python, analyzing trends in neuronal activity over time in infant mammals with Professor Mainak Patel.</p>
+        </div>
+        </li>
+        <li class="timeline-event">
+        <img src="{% static 'projects/images/tableau.svg' %}" alt="Tableau Logo" class="timeline-event-icon">
+        <div class="timeline-event-copy">
+            <p class="timeline-event-thumbnail">May 2020 - August 2020</p>
+            <h3>Solutions Engineer Intern</h3>
+            <h4>Tableau Software</h4>
+            <p>Engineered demo data within an Extract, Transform, and Load workflow to curate for visualization in product demos.</p>
+            <p>Developed a custom web data connector for flight data using a REST API and Python for a customized product demonstration, standardizing the demonstration for repeat use by the Solutions Organization. 
+            </p>
+        </div>
+        </li>
+    </ul>  
+</div>
+{% endblock %}
