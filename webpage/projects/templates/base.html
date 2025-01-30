@@ -15,9 +15,7 @@
 <body>
     <header>
         <nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                ☰
-            </button>
+            <input type="checkbox" role="button" aria-label="Display the menu" class="nav-toggle">
             <ul class="nav-menu">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'portfolio' %}">Portfolio</a></li>

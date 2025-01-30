@@ -20,19 +20,67 @@ nav {
 
 .nav-toggle {
     display: none;
-    background: none;
+    --s: 20px; /* control the size */
+    --c: hsl(0, 0%, 33%); /* the color */
+    
+    height: var(--s);
+    aspect-ratio: 1;
     border: none;
-    color: rgb(27, 27, 27);
-    font-size: 24px;
-    font-weight: 700;
+    padding: 0;
+    border-inline: calc(var(--s)/2) solid #0000; 
+    box-sizing: content-box;
+    --_g1: linear-gradient(var(--c) 20%,#0000 0 80%,var(--c) 0) 
+           no-repeat content-box border-box;
+    --_g2: radial-gradient(circle closest-side at 50% 12.5%,var(--c) 95%,#0000) 
+           repeat-y content-box border-box;
+    background: 
+      var(--_g2) left  var(--_p,0px) top,
+      var(--_g1) left  calc(var(--s)/10 + var(--_p,0px)) top,
+      var(--_g2) right var(--_p,0px) top,
+      var(--_g1) right calc(var(--s)/10 + var(--_p,0px)) top;
+    background-size: 
+      20% 80%,
+      40% 100%;
+    position: relative;
+    clip-path: inset(0 25%);
+    -webkit-mask: linear-gradient(90deg,#0000,#000 25% 75%,#0000);
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: 
+      background-position .3s var(--_s,.3s), 
+      clip-path 0s var(--_s,.6s);
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
 }
 
-.nav-toggle:hover {
-    transform: rotate(90deg); /* Rotate 90 degrees */
+.nav-toggle:before,
+.nav-toggle:after {
+  content:"";
+  position: absolute;
+  border-radius: var(--s);
+  inset: 40% 0;
+  background: var(--c);
+  transition: transform .3s calc(.3s - var(--_s,.3s));
 }
 
+.nav-toggle:checked {
+  clip-path: inset(0);
+  --_p: calc(-1*var(--s));
+  --_s: 0s;
+}
+.nav-toggle:checked:before {
+  transform: rotate(45deg);
+}
+.nav-toggle:checked:after {
+  transform: rotate(-45deg);
+}
+.nav-toggle:focus-visible {
+  clip-path: none;
+  -webkit-mask: none;
+  border: none;
+  outline: 2px solid var(--c);
+  outline-offset: 5px;
+}
 .nav-menu {
     list-style-type: none;
     padding: 0;
@@ -74,15 +122,6 @@ nav {
     transform: scaleX(1);
 }
 
-footer {
-    background-color: #ffffff;
-    color: rgb(90, 90, 90);
-    text-align: center;
-    padding: 2px 0;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -91,21 +130,68 @@ footer {
     }
 
     .nav-menu {
-        display: flex;
+        opacity: 0;
         flex-direction: row;
         width: 100%;
         justify-content: space-around;
     }
-
-    .nav-menu li {
-        margin: 0;
+    .nav-menu li a {
+        /* margin: 0;
         text-align: center;
-        flex: 1;
+        flex: 1; */
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
-    .nav-menu.show {
+    .nav-menu-show {
         display: flex;
+        transition: opacity 0.5s ease, transform 0.5s ease; 
     }
+
+    .nav-menu-show li a{
+        margin-right: 20px;
+        transform: translateY(0);
+    }
+    
+    .nav-menu-show li a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        position: relative; /* Ensure the pseudo-element is positioned relative to the link */
+        transition: letter-spacing 0.3s ease-in-out; /* Add transition for letter-spacing */
+    }
+    
+    .nav-menu-show li a::before {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0px;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        box-shadow: 1px 1px 1px #000;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out; /* Adjusted transition for smoother animation */
+    }
+    
+    .nav-menu-show li a:hover {
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+    
+    .nav-menu-show li a:hover::before{
+        transform: scaleX(1);
+    }
+}
+
+footer {
+    background-color: #ffffff;
+    color: rgb(90, 90, 90);
+    text-align: center;
+    padding: 2px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
 
 

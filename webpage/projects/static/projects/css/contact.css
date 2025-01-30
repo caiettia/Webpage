@@ -10,6 +10,7 @@
 .contact-container {
     max-width: 600px;
     width: 40%;
+    min-width: 350px; 
     margin: 0 auto; /* Center the container */
     padding: 20px;
     background-color: #f9f9f9; /* Light background color */
@@ -80,4 +81,20 @@
 
 .contact-container button:hover {
     background-color: #0056b3;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .contact-page {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .contact-container {
+        width: 80%; /* Adjust width for smaller screens */
+    }
+
+    .desc {
+        max-width: 100%; /* Adjust width for smaller screens */
+    }
 }
