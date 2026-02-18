@@ -19,5 +19,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/Webpage/webpage
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
+            # Rebuild and restart
             sudo docker compose up --build -d
