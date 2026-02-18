@@ -20,4 +20,4 @@ jobs:
           script: |
             cd ~/Webpage/webpage
             git pull origin main
-            sudo docker-compose up --build -d
+            sudo docker compose up --build -d
