@@ -26,4 +26,4 @@ jobs:
             git reset --hard origin/main
             
             # Rebuild and restart
-            sudo docker compose up --build -d
+            sudo docker-compose up --build -d
