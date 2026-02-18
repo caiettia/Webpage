@@ -18,8 +18,12 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            sudo chown -R ubuntu:ubuntu ~/Webpage
+            
             cd ~/Webpage/webpage
+            
             git fetch origin main
             git reset --hard origin/main
+            
             # Rebuild and restart
             sudo docker compose up --build -d
