@@ -27,4 +27,14 @@ jobs:
             
             # Rebuild and restart
             sudo docker-compose down
-            sudo docker-compose up --build -d
+
+            # 2. Kill the port squatters
+            # This stops any container currently mapped to port 8000
+            sudo docker ps -q --filter "publish=8000" | xargs -r sudo docker stop
+            
+            # 3. Last resort: Kill any process (Docker or otherwise) on port 8000
+            sudo fuser -k 8000/tcp || true
+            
+            # 4. Start fresh with Gunicorn (now that you've updated your compose file)
+            sudo docker-compose up --build -d          
+            
