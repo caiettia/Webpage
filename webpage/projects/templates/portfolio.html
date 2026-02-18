@@ -1,44 +1,147 @@
-{% extends './base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-{% block title %}Portfolio{% endblock %}
+{% block title %}Portfolio — Andrew Caietti{% endblock %}
 
 {% block content %}
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" type="text/css" href="{% static 'projects/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'projects/css/portfolio.css' %}">
-    <div class="portfolio-page">
-        <div class="content-container">
-            <h1>Portfolio</h1>
-            <div class="tags">
-                <a href="{% url 'portfolio' %}">All</a>
-                {% for tag in tags %}
-                    <a href="{% url 'projects_by_tag' tag.name %}">{{ tag.name }}</a>
-                {% endfor %}
-            </div>           
-            <ul class="projects-container">
-                {% for project in projects %}
-                    <li class="project-item">
-                        <h2>{{ project.title }}</h2>
-                        {% if project.image_url %}
-                            <img src="{{ project.image_url }}" alt="{{ project.title }}">
-                        {% endif %}
-                        <p>{{ project.description }}</p>
-                        <div class="project-footer">
-                            <div class="project-tags">
-                                {% for tag in project.tags.all %}
-                                    <a href="{% url 'projects_by_tag' tag.name %}">{{ tag.name }}</a>
-                                {% endfor %}
-                            </div>
-                            <div class="project-link">
-                                <a href="{{ project.github_url }}" target="_blank" class="social-icon">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+<div id="portfolio-page" class="portfolio-page mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12" data-initial-tag="{{ selected_tag|escapejs }}">
+    <header class="mb-6 sm:mb-8">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-surface-900 tracking-tight">Portfolio</h1>
+        <p class="mt-1 sm:mt-2 text-slate-600 text-sm sm:text-base">Projects and work across data, ML, and engineering.</p>
+    </header>
+
+    <div class="portfolio-filters flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8" role="group" aria-label="Filter projects by tag">
+        <button type="button" class="portfolio-pill portfolio-pill--active" data-filter="" aria-pressed="true">
+            All
+        </button>
+        {% for tag in tags %}
+        <button type="button" class="portfolio-pill" data-filter="{{ tag.name|escapejs }}" aria-pressed="false">
+            {{ tag.name }}
+        </button>
+        {% endfor %}
     </div>
+
+    <ul id="portfolio-grid" class="portfolio-grid grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 list-none p-0 m-0" role="list">
+        {% for project in projects %}
+        <li class="portfolio-card" data-tags="{% for t in project.tags.all %}{{ t.name|escapejs }}{% if not forloop.last %},{% endif %}{% endfor %}">
+            <article class="group flex flex-col h-full rounded-xl sm:rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-300">
+                {% if project.image_url %}
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 flex-shrink-0">
+                    <img src="{{ project.image_url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                {% endif %}
+                <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                    <h2 class="text-lg sm:text-xl font-semibold text-surface-900 mb-1.5 sm:mb-2">{{ project.title }}</h2>
+                    <p class="text-slate-600 text-sm sm:text-base flex-1 line-clamp-3">{{ project.description }}</p>
+                    <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex flex-wrap gap-1.5">
+                            {% for tag in project.tags.all %}
+                            <button type="button" class="portfolio-card-tag" data-filter="{{ tag.name|escapejs }}" aria-label="Filter by {{ tag.name }}">
+                                {{ tag.name }}
+                            </button>
+                            {% endfor %}
+                        </div>
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 hover:text-surface-900 hover:bg-slate-100 transition-colors flex-shrink-0" aria-label="View {{ project.title }} on GitHub">
+                            <i class="fab fa-github text-base sm:text-lg"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <p id="portfolio-empty" class="portfolio-empty hidden text-center text-slate-500 py-8 sm:py-12" role="status">
+        No projects match this filter.
+    </p>
+</div>
+
+<script>
+(function () {
+    var page = document.getElementById('portfolio-page');
+    if (!page) return;
+    var grid = document.getElementById('portfolio-grid');
+    var empty = document.getElementById('portfolio-empty');
+    var pills = page.querySelectorAll('.portfolio-pill');
+    var cardTags = page.querySelectorAll('.portfolio-card-tag');
+    var initialTag = (page.getAttribute('data-initial-tag') || '').trim();
+
+    function getCards() {
+        return grid ? grid.querySelectorAll('.portfolio-card') : [];
+    }
+
+    function setActivePill(filterValue) {
+        pills.forEach(function (pill) {
+            var value = (pill.getAttribute('data-filter') || '').trim();
+            var active = value === filterValue;
+            pill.classList.toggle('portfolio-pill--active', active);
+            pill.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+    }
+
+    function filterProjects(tagName) {
+        var cards = getCards();
+        var visible = 0;
+        var tag = (tagName || '').trim().toLowerCase();
+        cards.forEach(function (card) {
+            var tagsAttr = (card.getAttribute('data-tags') || '').toLowerCase();
+            var tagsList = tagsAttr ? tagsAttr.split(',').map(function (t) { return t.trim(); }).filter(Boolean) : [];
+            var show = !tag || tagsList.indexOf(tag) !== -1;
+            card.classList.toggle('portfolio-card--hidden', !show);
+            if (show) visible++;
+        });
+        if (empty) {
+            empty.classList.toggle('hidden', visible > 0);
+            empty.setAttribute('aria-live', 'polite');
+        }
+        return visible;
+    }
+
+    function updateUrl(tagName) {
+        var url = window.location.pathname;
+        if (tagName) {
+            url += '?' + encodeURIComponent('tag') + '=' + encodeURIComponent(tagName);
+        }
+        window.history.replaceState({ tag: tagName || null }, '', url);
+    }
+
+    function applyFilter(tagName) {
+        var value = (tagName || '').trim();
+        setActivePill(value);
+        filterProjects(value);
+        updateUrl(value);
+    }
+
+    function handlePillClick(e) {
+        var pill = e.target.closest('.portfolio-pill');
+        if (!pill) return;
+        e.preventDefault();
+        var filter = (pill.getAttribute('data-filter') || '').trim();
+        applyFilter(filter);
+    }
+
+    function handleCardTagClick(e) {
+        var btn = e.target.closest('.portfolio-card-tag');
+        if (!btn) return;
+        e.preventDefault();
+        var filter = (btn.getAttribute('data-filter') || '').trim();
+        applyFilter(filter);
+    }
+
+    pills.forEach(function (pill) {
+        pill.addEventListener('click', handlePillClick);
+    });
+    cardTags.forEach(function (btn) {
+        btn.addEventListener('click', handleCardTagClick);
+    });
+
+    if (initialTag) {
+        applyFilter(initialTag);
+    } else {
+        setActivePill('');
+        filterProjects('');
+    }
+})();
+</script>
 {% endblock %}

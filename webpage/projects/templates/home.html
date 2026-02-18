@@ -1,12 +1,33 @@
-{% extends './base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'projects/css/home.css' %}">
-{% endblock %}
+{% block title %}Andrew Caietti — Home{% endblock %}
+
 {% block content %}
-<div class="home-container">
-    <h1 class="home-title">Andrew Caietti</h1>
-    <p class="home-description">Engineer. Surfer. Researcher.</p>
-</div>
+<section class="hero-safe relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://raw.githubusercontent.com/caiettia/personal-site-work/refs/heads/main/img/header.jpg')] bg-cover bg-center bg-no-repeat" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/60" aria-hidden="true"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-surface-900 mb-3">
+            Andrew Caietti
+        </h1>
+        <p class="text-xl sm:text-2xl text-brand-600 font-semibold mb-4">
+            Engineer. Surfer. Researcher.
+        </p>
+        <p class="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
+            I design and build data-driven, ML-powered solutions that turn complex problems into intuitive products.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <a href="{% url 'portfolio' %}"  class="inline-flex items-center justify-center px-6 py-3 rounded-full text-base font-semibold text-white bg-surface-900 shadow-lg shadow-slate-900/25 hover:bg-surface-800 hover:shadow-xl hover:shadow-slate-900/30 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-all duration-200">
+                View portfolio
+            </a>
+            <a href="{% url 'experience' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-base font-semibold text-surface-900 bg-white border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-all duration-200">
+                Experience
+            </a>
+            <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-base font-semibold text-surface-700 hover:text-surface-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-colors duration-200">
+                Get in touch
+            </a>
+        </div>
+    </div>
+</section>
 {% endblock %}

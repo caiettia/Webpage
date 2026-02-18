@@ -196,37 +196,112 @@ footer {
 
 
 .home-container {
+    position: relative;
     background-image: url("https://raw.githubusercontent.com/caiettia/personal-site-work/refs/heads/main/img/header.jpg");
-    background-size: cover; /* Ensure the image covers the entire background */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
-    height: 100vh; /* Full viewport height */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 80px);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    color: rgb(19, 19, 19); /* Optional: Set text color for better visibility */
-    text-align: center; /* Optional: Center the text */
-    padding: 10px 20px; /* Reduce top padding to move content up */
+    justify-content: center;
+    padding: 40px 20px;
+    color: #0f172a;
+    text-align: center;
+}
+
+.home-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(255,255,255,0.9), rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.4));
+}
+
+.home-inner {
+    position: relative;
+    max-width: 720px;
+    z-index: 1;
 }
 
 .home-title {
-    font-size: 4em; /* Set font size for the title */
-    font-weight: 900; /* Make the title bold */
-    margin-top: 0; /* Reduce or remove the top margin */
-    margin-bottom: 20px; /* Add space below the title */
-    position: relative; /* Use relative positioning */
-    top: -100px; /* Move the title up by 10px */
-    user-select: none; /* Prevent text selection */
+    font-size: clamp(2.8rem, 5vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.5rem;
+    user-select: none;
 }
 
 .home-description {
-    font-size: 1.5em; /* Set font size for the description */
-    margin-bottom: 10px; /* Add space below the description */
-    font-weight: 600; /* Set font weight for the description */
-    position: relative; /* Use relative positioning */
-    top: -100px; /* Move the description up by 100px */
-    user-select: none; /* Prevent text selection */
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    margin: 0 0 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    user-select: none;
+}
+
+.home-subcopy {
+    margin: 0 auto 1.5rem;
+    max-width: 40rem;
+    color: #334155;
+}
+
+.home-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.home-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.home-cta.primary {
+    background: #0f172a;
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
+}
+
+.home-cta.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.45);
+}
+
+.home-cta.secondary {
+    background: #ffffff;
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.18);
+}
+
+.home-cta.secondary:hover {
+    background: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.3);
+}
+
+.home-cta.tertiary {
+    background: transparent;
+    color: #0f172a;
+    border-color: rgba(148, 163, 184, 0.7);
+}
+
+.home-cta.tertiary:hover {
+    background: rgba(248, 250, 252, 0.9);
+    border-color: rgba(15, 23, 42, 0.2);
+}
+
+@media (max-width: 600px) {
+    .home-container {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
 }
 
 

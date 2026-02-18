@@ -1,41 +1,105 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{% block title %}Andrew Caietti{% endblock %}</title>
-    <meta name="description" content="Andrew Caietti's personal website showcasing portfolio, professional and personal achievements, high performance and why he makes a good employee, and more.">
+    <meta name="description" content="Andrew Caietti's personal website — portfolio, experience, and contact. Engineer, surfer, researcher. ML & analytics solutions.">
     <meta name="keywords" content="Andrew Caietti, portfolio, contact, engineer, machine learning, surfer, researcher, solutions engineer, product management, product">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'projects/css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="{% static 'projects/images/surfboard.svg' %}">
-    <script src="{% static 'projects/js/main.js' %}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        surface: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'page-in': 'pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        pageIn: {
+                            '0%': { opacity: '0', transform: 'translateY(12px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'projects/css/site.css' %}">
+    {% block head %}{% endblock %}
 </head>
-<body>
-    <header>
-        <nav>
-            <input type="checkbox" role="button" aria-label="Display the menu" class="nav-toggle">
-            <ul class="nav-menu">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
-                <li><a href="{% url 'experience' %}">Experience</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-                <!-- Add more navigation links as needed -->
+<body class="antialiased font-sans text-surface-900 bg-white min-h-screen flex flex-col">
+    <header class="header-safe sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-14 sm:h-16" aria-label="Main navigation">
+            <a href="{% url 'default' %}" class="flex items-center gap-2 text-surface-900 font-semibold tracking-tight hover:text-brand-600 transition-colors">
+                <span class="text-lg">Andrew Caietti</span>
+            </a>
+            <button type="button" id="nav-toggle" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 hover:bg-surface-100 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+                <i class="fas fa-bars text-lg js-nav-icon-open" aria-hidden="true"></i>
+                <i class="fas fa-times text-lg js-nav-icon-close hidden" aria-hidden="true"></i>
+            </button>
+            <div id="nav-backdrop" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm md:hidden opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+            <ul id="nav-menu" class="nav-menu flex flex-col md:flex-row items-center gap-1 md:gap-0 md:gap-6 py-4 md:py-0 px-4 md:px-0 list-none m-0 fixed md:relative inset-x-0 top-14 md:top-0 z-50 md:z-auto bg-white md:bg-transparent border-b md:border-b-0 border-slate-200 md:shadow-none shadow-lg -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out w-full md:w-auto" role="list">
+                <li><a href="{% url 'default' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'portfolio' %}" class="nav-link">Portfolio</a></li>
+                <li><a href="{% url 'experience' %}" class="nav-link">Experience</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <div class="page">
-            <div class = "page-content">
-                {% block content %}
-                <!-- Page content will be injected here -->
-                {% endblock %}
-            </div>
+    <main class="main-safe flex-1 w-full" id="main-content" role="main">
+        <div class="page-wrapper">
+            {% block content %}{% endblock %}
         </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Andrew's Site</p>
+    <footer class="mt-auto border-t border-slate-200 bg-surface-50">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+                <p>&copy; {% now "Y" %} Andrew Caietti. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-brand-600 transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                    <a href="https://github.com/caiettia" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-brand-600 transition-colors" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
+    <script src="{% static 'projects/js/main.js' %}" defer></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

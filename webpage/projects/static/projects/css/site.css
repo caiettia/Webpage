@@ -1,0 +1,271 @@
+/* Nav link styling (matches Tailwind design tokens) */
+.nav-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    color: #475569;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+}
+.nav-link:hover {
+    color: #0284c7;
+    background-color: #f1f5f9;
+}
+
+.page-wrapper {
+    animation: pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile nav: off-canvas by default, slide in when open */
+@media (max-width: 767px) {
+    .nav-menu {
+        transform: translateX(-100%);
+        top: calc(3.5rem + env(safe-area-inset-top, 0px));
+    }
+    .nav-menu.is-open {
+        transform: translateX(0);
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-menu {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-wrapper {
+        animation: none;
+    }
+    .nav-menu {
+        transition: none;
+    }
+}
+
+/* Portfolio: layout and filters */
+.portfolio-page {
+    min-height: 0;
+}
+@media (max-width: 639px) {
+    .portfolio-filters {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .portfolio-filters::-webkit-scrollbar {
+        height: 4px;
+    }
+}
+
+.portfolio-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    background-color: #f1f5f9;
+    color: #475569;
+}
+.portfolio-pill:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+.portfolio-pill:focus {
+    outline: none;
+}
+.portfolio-pill:focus-visible {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0ea5e9;
+}
+.portfolio-pill--active {
+    background-color: #0f172a;
+    color: #fff;
+    border-color: #0f172a;
+}
+.portfolio-pill--active:hover {
+    background-color: #1e293b;
+    color: #fff;
+}
+
+.portfolio-card {
+    transition: opacity 0.25s ease;
+}
+.portfolio-card--hidden {
+    display: none;
+}
+
+.portfolio-card-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.portfolio-card-tag:hover {
+    background-color: #bae6fd;
+    color: #075985;
+}
+.portfolio-card-tag:focus {
+    outline: none;
+}
+.portfolio-card-tag:focus-visible {
+    box-shadow: 0 0 0 2px #0ea5e9;
+}
+
+/* ========== Experience page: mobile-friendly logos (no clipping) ========== */
+/* Timeline: leave room on the left so the half-offset icon isn’t clipped on narrow viewports */
+.experience-timeline-container {
+    padding-left: 0;
+}
+@media (max-width: 639px) {
+    .experience-timeline-container {
+        padding-left: 1.5rem;
+    }
+}
+
+/* Timeline event icon: no overflow-hidden; padded inner area so the image never clips */
+.experience-timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    transform: translateX(calc(-50% + 1px));
+    border-radius: 0.75rem;
+    background: #fff;
+    border: 2px solid #0ea5e9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.375rem;
+    box-sizing: border-box;
+}
+@media (min-width: 640px) {
+    .experience-timeline-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+.experience-timeline-icon-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+}
+.experience-timeline-icon-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Sidebar / volunteer logos: padded box so images don’t clip on iOS */
+.experience-logo-box {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    box-sizing: border-box;
+}
+.experience-logo-box--svg,
+.experience-logo-box--img {
+    background: #f8fafc;
+}
+.experience-logo-box--round {
+    border-radius: 9999px;
+}
+.experience-logo-box--edu {
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.375rem;
+    background: #fff;
+}
+.experience-logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+.experience-logo-img--cover {
+    object-fit: cover;
+}
+
+/* ========== Mobile: safe area (notched iPhones) and touch targets ========== */
+@supports (padding: env(safe-area-inset-top)) {
+    .header-safe {
+        padding-top: env(safe-area-inset-top);
+    }
+    .main-safe {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+    .hero-safe {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+}
+
+/* Minimum touch target ~44px for primary controls on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .nav-link {
+        min-height: 44px;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    .portfolio-pill {
+        min-height: 44px;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    /* Form inputs: comfortable tap height on mobile */
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        min-height: 48px;
+    }
+    textarea {
+        min-height: 120px;
+    }
+}
