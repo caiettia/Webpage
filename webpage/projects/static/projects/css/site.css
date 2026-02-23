@@ -12,6 +12,20 @@
     color: #0284c7;
     background-color: #f1f5f9;
 }
+html.dark .nav-link {
+    color: #cbd5e1;
+}
+html.dark .nav-link:hover {
+    color: #7dd3fc;
+    background-color: #1e293b;
+}
+html.dark .nav-menu {
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.6);
+}
+
+.theme-toggle i {
+    pointer-events: none;
+}
 
 .page-wrapper {
     animation: pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -264,6 +278,11 @@
 
 /* Minimum touch target ~44px for primary controls on touch devices */
 @media (hover: none) and (pointer: coarse) {
+    .theme-toggle,
+    #nav-toggle {
+        width: 44px;
+        height: 44px;
+    }
     .nav-link {
         min-height: 44px;
         padding-top: 0.75rem;
@@ -282,5 +301,132 @@
     }
     textarea {
         min-height: 120px;
+    }
+}
+
+/* Dark mode */
+html.dark .portfolio-pill {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    border-color: #334155;
+}
+html.dark .portfolio-pill:hover {
+    background-color: #334155;
+    color: #f8fafc;
+}
+html.dark .portfolio-pill--active {
+    background-color: #38bdf8;
+    border-color: #38bdf8;
+    color: #082f49;
+}
+html.dark .portfolio-pill--active:hover {
+    background-color: #7dd3fc;
+    border-color: #7dd3fc;
+    color: #082f49;
+}
+html.dark .portfolio-card-tag {
+    background-color: #0c4a6e;
+    color: #e0f2fe;
+}
+html.dark .portfolio-card-tag:hover {
+    background-color: #075985;
+    color: #f0f9ff;
+}
+html.dark #portfolio-page .portfolio-card > article {
+    background-color: #0f172a;
+    border-color: #334155;
+}
+html.dark #portfolio-page .portfolio-card > article:hover {
+    border-color: #475569;
+}
+html.dark #portfolio-page .portfolio-card-description {
+    color: #cbd5e1;
+}
+html.dark .portfolio-empty {
+    color: #94a3b8;
+}
+html.dark .experience-timeline-icon {
+    background: #0f172a;
+    border-color: #38bdf8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+html.dark .experience-logo-box,
+html.dark .experience-logo-box--svg,
+html.dark .experience-logo-box--img {
+    background: #0f172a;
+    border-color: #334155;
+}
+html.dark .experience-logo-box--edu {
+    background: #0f172a;
+}
+html.dark .experience-page > .flex > aside > article,
+html.dark .experience-page > .flex > aside > section {
+    background: #0f172a;
+    border-color: #334155;
+}
+html.dark .experience-page .experience-timeline-item {
+    border-left-color: #0ea5e9;
+}
+html.dark .experience-page .inline-block.bg-surface-900 {
+    background-color: #075985;
+}
+html.dark .experience-page .text-brand-600 {
+    color: #7dd3fc;
+}
+html.dark .experience-page .text-slate-700 {
+    color: #e2e8f0;
+}
+html.dark .experience-page .prose.prose-slate {
+    --tw-prose-body: #cbd5e1;
+    --tw-prose-headings: #f1f5f9;
+    --tw-prose-bold: #f8fafc;
+}
+html.dark .contact-page-modern input,
+html.dark .contact-page-modern textarea {
+    color-scheme: dark;
+}
+html.dark .text-surface-900 {
+    color: #f1f5f9;
+}
+html.dark .text-surface-800,
+html.dark .text-surface-700 {
+    color: #e2e8f0;
+}
+html.dark .text-slate-700 {
+    color: #e2e8f0;
+}
+html.dark .text-slate-600 {
+    color: #cbd5e1;
+}
+html.dark .text-slate-500 {
+    color: #94a3b8;
+}
+html.dark .placeholder-slate-400::placeholder {
+    color: #64748b;
+}
+html.dark .bg-white {
+    background-color: #0f172a;
+}
+html.dark .bg-slate-50 {
+    background-color: #111827;
+}
+html.dark .bg-slate-100 {
+    background-color: #1e293b;
+}
+html.dark .border-slate-200,
+html.dark .border-slate-100 {
+    border-color: #334155;
+}
+html.dark .prose :where(p, strong, h1, h2, h3, h4, li) {
+    color: #cbd5e1;
+}
+html.dark .shadow-lg,
+html.dark .shadow-sm {
+    box-shadow: 0 10px 28px rgba(2, 6, 23, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle {
+        transition: none;
     }
 }

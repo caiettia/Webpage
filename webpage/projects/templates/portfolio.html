@@ -5,8 +5,8 @@
 {% block content %}
 <div id="portfolio-page" class="portfolio-page mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12" data-initial-tag="{{ selected_tag|escapejs }}">
     <header class="mb-6 sm:mb-8">
-        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-surface-900 tracking-tight">Portfolio</h1>
-        <p class="mt-1 sm:mt-2 text-slate-600 text-sm sm:text-base">Projects and work across data, ML, and engineering.</p>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-surface-900 dark:text-slate-100 tracking-tight">Portfolio</h1>
+        <p class="mt-1 sm:mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base">Projects and work across data, ML, and engineering.</p>
     </header>
 
     <div class="portfolio-filters flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8" role="group" aria-label="Filter projects by tag">
@@ -23,16 +23,16 @@
     <ul id="portfolio-grid" class="portfolio-grid list-none p-0 m-0" role="list">
         {% for project in projects %}
         <li class="portfolio-card" data-tags="{% for t in project.tags.all %}{{ t.name|escapejs }}{% if not forloop.last %},{% endif %}{% endfor %}">
-            <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-300">
+            <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
                 {% if project.image_url %}
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 flex-shrink-0">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
                     <img src="{{ project.image_url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 {% endif %}
                 <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
-                    <h2 class="text-lg sm:text-xl font-semibold text-surface-900 mb-1.5 sm:mb-2">{{ project.title }}</h2>
-                    <p class="portfolio-card-description text-slate-600 text-sm sm:text-base">{{ project.description }}</p>
-                    <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                    <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">{{ project.title }}</h2>
+                    <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">{{ project.description }}</p>
+                    <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
                         <div class="flex flex-wrap gap-1.5">
                             {% for tag in project.tags.all %}
                             <button type="button" class="portfolio-card-tag" data-filter="{{ tag.name|escapejs }}" aria-label="Filter by {{ tag.name }}">
@@ -41,7 +41,7 @@
                             {% endfor %}
                         </div>
                         {% if project.github_url %}
-                        <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 hover:text-surface-900 hover:bg-slate-100 transition-colors flex-shrink-0" aria-label="View {{ project.title }} on GitHub">
+                        <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View {{ project.title }} on GitHub">
                             <i class="fab fa-github text-base sm:text-lg"></i>
                         </a>
                         {% endif %}
