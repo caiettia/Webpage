@@ -1,40 +1,36 @@
-name: Deploy to EC2
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            sudo chown -R ubuntu:ubuntu ~/Webpage
-            
-            cd ~/Webpage/webpage
-            
-            git fetch origin main
-            git reset --hard origin/main
-            
-            # Rebuild and restart
-            sudo docker-compose down
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-            # 2. Kill the port squatters
-            # This stops any container currently mapped to port 8000
-            sudo docker ps -q --filter "publish=8000" | xargs -r sudo docker stop
-            
-            # 3. Last resort: Kill any process (Docker or otherwise) on port 8000
-            sudo fuser -k 8000/tcp || true
-            
-            # 4. Start fresh with Gunicorn (now that you've updated your compose file)
-            sudo docker-compose up --build -d          
-            
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

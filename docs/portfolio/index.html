@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Portfolio — Andrew Caietti</title>
+    <meta name="description" content="Andrew Caietti's personal website — portfolio, experience, and contact. Engineer, surfer, researcher. ML & analytics solutions.">
+    <meta name="keywords" content="Andrew Caietti, portfolio, contact, engineer, machine learning, surfer, researcher, solutions engineer, product management, product">
+    <link rel="icon" type="image/svg+xml" href="/static/projects/images/surfboard.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var key = 'theme-preference';
+            var storedTheme = null;
+            try {
+                storedTheme = window.localStorage.getItem(key);
+            } catch (e) {}
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var shouldUseDark = storedTheme === 'dark' || (!storedTheme && prefersDark);
+            if (shouldUseDark) {
+                root.classList.add('dark');
+            } else {
+                root.classList.remove('dark');
+            }
+        })();
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        surface: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'page-in': 'pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        pageIn: {
+                            '0%': { opacity: '0', transform: 'translateY(12px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/projects/css/site.css">
+</head>
+<body class="antialiased font-sans text-surface-900 bg-white dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+    <header class="header-safe sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 supports-[backdrop-filter]:dark:bg-slate-950/75">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-14 sm:h-16" aria-label="Main navigation">
+            <a href="/" class="flex items-center gap-2 text-surface-900 dark:text-slate-100 font-semibold tracking-tight hover:text-brand-600 transition-colors">
+                <span class="text-lg">Andrew Caietti</span>
+            </a>
+            <div id="nav-backdrop" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm md:hidden opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+            <ul id="nav-menu" class="nav-menu md:ml-auto flex flex-col md:flex-row items-center gap-1 md:gap-0 md:gap-6 py-4 md:py-0 px-4 md:px-0 list-none m-0 fixed md:relative inset-x-0 top-14 md:top-0 z-50 md:z-auto bg-white dark:bg-slate-950 md:bg-transparent md:dark:bg-transparent border-b md:border-b-0 border-slate-200 dark:border-slate-800 md:shadow-none shadow-lg -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out w-full md:w-auto" role="list">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/portfolio/" class="nav-link">Portfolio</a></li>
+                <li><a href="/experience/" class="nav-link">Experience</a></li>
+                <li><a href="/contact/" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="ml-auto md:ml-2 flex items-center gap-1.5 sm:gap-2">
+                <button type="button" id="theme-toggle" class="theme-toggle inline-flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 dark:text-slate-200 hover:bg-surface-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-colors" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+                    <i class="fas fa-moon text-base js-theme-icon-moon" aria-hidden="true"></i>
+                    <i class="fas fa-sun text-base js-theme-icon-sun hidden" aria-hidden="true"></i>
+                </button>
+                <button type="button" id="nav-toggle" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 dark:text-slate-200 hover:bg-surface-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+                    <i class="fas fa-bars text-lg js-nav-icon-open" aria-hidden="true"></i>
+                    <i class="fas fa-times text-lg js-nav-icon-close hidden" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main class="main-safe flex-1 w-full" id="main-content" role="main">
+        <div class="page-wrapper">
+            <div id="portfolio-page" class="portfolio-page mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12" data-initial-tag="">
+                <header class="mb-6 sm:mb-8">
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-surface-900 dark:text-slate-100 tracking-tight">Portfolio</h1>
+                    <p class="mt-1 sm:mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base">Projects and work across data, ML, and engineering.</p>
+                </header>
+
+                <div class="portfolio-filters flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8" role="group" aria-label="Filter projects by tag">
+                    <button type="button" class="portfolio-pill portfolio-pill--active" data-filter="" aria-pressed="true">
+                        All
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="Python" aria-pressed="false">
+                        Python
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="Machine Learning" aria-pressed="false">
+                        Machine Learning
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="Kepler.gl" aria-pressed="false">
+                        Kepler.gl
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="AWS" aria-pressed="false">
+                        AWS
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="Javascript" aria-pressed="false">
+                        Javascript
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="Transformers" aria-pressed="false">
+                        Transformers
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="SKLearn" aria-pressed="false">
+                        SKLearn
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="R" aria-pressed="false">
+                        R
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="node" aria-pressed="false">
+                        node
+                    </button>
+                    <button type="button" class="portfolio-pill" data-filter="Docker" aria-pressed="false">
+                        Docker
+                    </button>
+                </div>
+
+                <ul id="portfolio-grid" class="portfolio-grid list-none p-0 m-0" role="list">
+                    <!-- Project 1: Regularization Techniques -->
+                    <li class="portfolio-card" data-tags="Python,Machine Learning">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/main/project2/fire_corr_data.png" alt="Regularization Techniques" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">Regularization Techniques</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">An exploration of regularization techniques from Ridge to LASSO to SCAD, on Forest Fires, Boston Housing, and randomly generated datasets.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Machine Learning" aria-label="Filter by Machine Learning">Machine Learning</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Regularization-Techniques" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Regularization Techniques on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 2: Hype Words -->
+                    <li class="portfolio-card" data-tags="Python,Machine Learning,Transformers,SKLearn">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/main/project5/raw_perc_over_time.png" alt="Hype Words: Social Media Mining and Classification" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">Hype Words: Social Media Mining and Classification</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">Utilized web scraping techniques to curate live datasets of social media posts, then exploring classification techniques to understand social media sentiment around Blockchain in Healthcare. Successfully applied a transformer-based approach to text classification using BERT.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Machine Learning" aria-label="Filter by Machine Learning">Machine Learning</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Transformers" aria-label="Filter by Transformers">Transformers</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="SKLearn" aria-label="Filter by SKLearn">SKLearn</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Text-Mining" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Hype Words on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 3: WMATA DC Metro Analysis -->
+                    <li class="portfolio-card" data-tags="Python,AWS,Javascript,node">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWlkanVrZGZ4ampvNG9tM2xjbXlmeWh4aTN0YXA5a2RxeXF2ZDg4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GDC2i1BRNY6qaYdswH/giphy.gif" alt="WMATA DC Metro Analysis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">WMATA DC Metro Analysis</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">Developed a Websocket off the WMATA API, run in an AWS instance alongside a Javascript-based webpage for live train and bus locations. Lambda functions utilized in tandem with main site to feed route information, timings, and predicted arrivals.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="AWS" aria-label="Filter by AWS">AWS</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Javascript" aria-label="Filter by Javascript">Javascript</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="node" aria-label="Filter by node">node</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/wmata_metro?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View WMATA DC Metro Analysis on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 4: Visualizing Bird Migrations -->
+                    <li class="portfolio-card" data-tags="Kepler.gl">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGk4OWw1ZzdpdWlidjA0ZmN0M3ZrazY3d2dncm00eHRvd3oxY2MxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C3pc6elPw27tXxqmOh/giphy.gif" alt="Visualizing Bird Migrations" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">Visualizing Bird Migrations</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">Processing of geojson, csv, and netcdf files to showcase Swainson Hawk migration patterns.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Kepler.gl" aria-label="Filter by Kepler.gl">Kepler.gl</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Birds-Visualized" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Visualizing Bird Migrations on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 5: Comparing Regressors -->
+                    <li class="portfolio-card" data-tags="Python,Machine Learning">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/main/all_reg_together.png" alt="Comparing Regressors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">Comparing Regressors</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">Analysis of various regression approaches from localized kernel-based regression (LOWESS) to neural networks in their efficacy on predicting Boston Housing Prices.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Machine Learning" aria-label="Filter by Machine Learning">Machine Learning</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Comparing-Regressors" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Comparing Regressors on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 6: NOAA: Waves and Buoys Scraping -->
+                    <li class="portfolio-card" data-tags="Python">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXY1bWVybzk1bXR0OG5wbzQ1a2U0bWF5d3ZnMXpxcnYzOHR5NzE4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BgRsvWCYQBWCQ57wrv/giphy.gif" alt="NOAA: Waves and Buoys Scraping" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">NOAA: Waves and Buoys Scraping</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">Utilize Beautiful Soup to crawl NOAA API endpoints for Buoy and Wave data to then store and visualize on a web-page map via Javascript.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/WavesPY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View NOAA: Waves and Buoys Scraping on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 7: Music Frequency Analysis -->
+                    <li class="portfolio-card" data-tags="Python,R">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://raw.githubusercontent.com/caiettia/Frequency-Analysis/refs/heads/main/ave_spectrogram_diff.PNG" alt="Music Frequency Analysis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">Music Frequency Analysis</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">A frequency exploration of songs from 1791, 1976, and 2021. Spectrographic analysis is done to see the differences between these three eras and genres.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="R" aria-label="Filter by R">R</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Frequency-Analysis/blob/main/Audio_Over_Times_Project%20(1).ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Music Frequency Analysis on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 8: El Nino/La Nina Time Series Analysis -->
+                    <li class="portfolio-card" data-tags="Python,R">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://raw.githubusercontent.com/caiettia/Frequency-Analysis/refs/heads/main/6874747elninoninaanalysis.png" alt="El Nino/La Nina Time Series Analysis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">El Nino/La Nina Time Series Analysis</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">An exploration of how the El Nino Southern Oscillation (ENSO) can have public health implications globally, with analysis done using spectral density, periodograms, and autocorrelation function plots.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="R" aria-label="Filter by R">R</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Frequency-Analysis/blob/main/caiettia_lab1%20(3).ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View El Nino/La Nina Time Series Analysis on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 9: My Personal Site -->
+                    <li class="portfolio-card" data-tags="Python,AWS,Javascript,Docker">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/refs/heads/main/personalsite.png" alt="My Personal Site" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">My Personal Site</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">The site you are on now! Built from the ground up with HTML, CSS, and JavaScript, and hosted on GitHub Pages with Cloudflare as the CDN. Automated deployments via GitHub Actions on every push to main.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="AWS" aria-label="Filter by AWS">AWS</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Javascript" aria-label="Filter by Javascript">Javascript</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Docker" aria-label="Filter by Docker">Docker</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Webpage/tree/main" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View My Personal Site on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+
+                <p id="portfolio-empty" class="portfolio-empty hidden text-center text-slate-500 py-8 sm:py-12" role="status">
+                    No projects match this filter.
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-surface-50 dark:bg-slate-900/60 transition-colors duration-200">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <p>&copy; 2026 Andrew Caietti. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                    <a href="https://github.com/caiettia" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        (function () {
+            if (window.__themeToggleInitialized) return;
+            window.__themeToggleInitialized = true;
+
+            var key = 'theme-preference';
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
+            var moonIcon = document.querySelector('.js-theme-icon-moon');
+            var sunIcon = document.querySelector('.js-theme-icon-sun');
+            var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+            function getStoredTheme() {
+                try {
+                    return window.localStorage.getItem(key);
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function persistTheme(theme) {
+                try {
+                    window.localStorage.setItem(key, theme);
+                } catch (e) {}
+            }
+
+            function getPreferredTheme() {
+                var stored = getStoredTheme();
+                if (stored === 'light' || stored === 'dark') return stored;
+                return media && media.matches ? 'dark' : 'light';
+            }
+
+            function applyTheme(theme, persist) {
+                var dark = theme === 'dark';
+                root.classList.toggle('dark', dark);
+                if (btn) {
+                    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+                    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+                    btn.setAttribute('title', dark ? 'Switch to light mode' : 'Switch to dark mode');
+                }
+                if (moonIcon) moonIcon.classList.toggle('hidden', dark);
+                if (sunIcon) sunIcon.classList.toggle('hidden', !dark);
+                if (persist) persistTheme(theme);
+            }
+
+            applyTheme(getPreferredTheme(), false);
+
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    var next = root.classList.contains('dark') ? 'light' : 'dark';
+                    applyTheme(next, true);
+                });
+            }
+
+            if (media) {
+                var mediaHandler = function () {
+                    var stored = getStoredTheme();
+                    if (stored !== 'light' && stored !== 'dark') {
+                        applyTheme(media.matches ? 'dark' : 'light', false);
+                    }
+                };
+                if (typeof media.addEventListener === 'function') {
+                    media.addEventListener('change', mediaHandler);
+                } else if (typeof media.addListener === 'function') {
+                    media.addListener(mediaHandler);
+                }
+            }
+        })();
+    </script>
+    <script src="/static/projects/js/main.js" defer></script>
+    <script>
+    (function () {
+        var page = document.getElementById('portfolio-page');
+        if (!page) return;
+
+        // Read initial tag from URL query string (?tag=Python) instead of Django context
+        var initialTag = (new URLSearchParams(window.location.search).get('tag') || '').trim();
+        page.setAttribute('data-initial-tag', initialTag);
+
+        var grid = document.getElementById('portfolio-grid');
+        var empty = document.getElementById('portfolio-empty');
+        var pills = page.querySelectorAll('.portfolio-pill');
+        var cardTags = page.querySelectorAll('.portfolio-card-tag');
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var layoutRaf = null;
+        var resizeObserver = typeof window.ResizeObserver === 'function' ? new window.ResizeObserver(function () {
+            queueGridLayout();
+        }) : null;
+
+        function getCards() {
+            return grid ? grid.querySelectorAll('.portfolio-card') : [];
+        }
+
+        function setActivePill(filterValue) {
+            pills.forEach(function (pill) {
+                var value = (pill.getAttribute('data-filter') || '').trim();
+                var active = value === filterValue;
+                pill.classList.toggle('portfolio-pill--active', active);
+                pill.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+        }
+
+        function filterProjects(tagName) {
+            var cards = getCards();
+            var visible = 0;
+            var tag = (tagName || '').trim().toLowerCase();
+            cards.forEach(function (card) {
+                var tagsAttr = (card.getAttribute('data-tags') || '').toLowerCase();
+                var tagsList = tagsAttr ? tagsAttr.split(',').map(function (t) { return t.trim(); }).filter(Boolean) : [];
+                var show = !tag || tagsList.indexOf(tag) !== -1;
+                card.classList.toggle('portfolio-card--hidden', !show);
+                if (show) visible++;
+            });
+            queueGridLayout();
+            if (empty) {
+                empty.classList.toggle('hidden', visible > 0);
+                empty.setAttribute('aria-live', 'polite');
+            }
+            return visible;
+        }
+
+        function updateUrl(tagName) {
+            var url = window.location.pathname;
+            if (tagName) {
+                url += '?' + encodeURIComponent('tag') + '=' + encodeURIComponent(tagName);
+            }
+            window.history.replaceState({ tag: tagName || null }, '', url);
+        }
+
+        function applyFilter(tagName) {
+            var value = (tagName || '').trim();
+            setActivePill(value);
+            filterProjects(value);
+            updateUrl(value);
+        }
+
+        function getColumnCount() {
+            var width = window.innerWidth || document.documentElement.clientWidth || 0;
+            if (width >= 1280) return 3;
+            if (width >= 640) return 2;
+            return 1;
+        }
+
+        function getColumnGap() {
+            var width = window.innerWidth || document.documentElement.clientWidth || 0;
+            if (width >= 1024) return 24;
+            if (width >= 640) return 20;
+            return 16;
+        }
+
+        function getVisibleCards() {
+            return Array.prototype.slice.call(getCards()).filter(function (card) {
+                return !card.classList.contains('portfolio-card--hidden');
+            });
+        }
+
+        function layoutPortfolioGrid() {
+            if (!grid) return;
+            var cards = getVisibleCards();
+            if (!cards.length) {
+                grid.style.height = '0px';
+                return;
+            }
+
+            var columns = getColumnCount();
+            var gap = getColumnGap();
+            var gridWidth = grid.clientWidth;
+            if (!gridWidth) return;
+            var cardWidth = (gridWidth - (gap * (columns - 1))) / columns;
+            var columnHeights = [];
+            var i;
+            for (i = 0; i < columns; i++) {
+                columnHeights.push(0);
+            }
+
+            cards.forEach(function (card, index) {
+                card.style.width = cardWidth + 'px';
+                var columnIndex = index < columns ? index : 0;
+                if (index >= columns) {
+                    var minHeight = columnHeights[0];
+                    columnIndex = 0;
+                    for (i = 1; i < columns; i++) {
+                        if (columnHeights[i] < minHeight) {
+                            minHeight = columnHeights[i];
+                            columnIndex = i;
+                        }
+                    }
+                }
+
+                var x = columnIndex * (cardWidth + gap);
+                var y = columnHeights[columnIndex];
+                card.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+                columnHeights[columnIndex] = y + card.offsetHeight + gap;
+            });
+
+            var maxHeight = 0;
+            columnHeights.forEach(function (h) {
+                if (h > maxHeight) maxHeight = h;
+            });
+            grid.style.height = Math.max(0, maxHeight - gap) + 'px';
+        }
+
+        function queueGridLayout() {
+            if (layoutRaf) window.cancelAnimationFrame(layoutRaf);
+            layoutRaf = window.requestAnimationFrame(function () {
+                layoutRaf = null;
+                layoutPortfolioGrid();
+            });
+        }
+
+        function getCardDescription(card) {
+            return card.querySelector('.portfolio-card-description');
+        }
+
+        function applyCollapsedDescription(desc) {
+            desc.style.flex = '0 0 auto';
+            desc.style.display = '-webkit-box';
+            desc.style.webkitBoxOrient = 'vertical';
+            desc.style.webkitLineClamp = '3';
+            desc.style.overflow = 'hidden';
+        }
+
+        function applyExpandedDescription(desc) {
+            desc.style.flex = '0 0 auto';
+            desc.style.display = 'block';
+            desc.style.webkitBoxOrient = '';
+            desc.style.webkitLineClamp = '';
+            desc.style.overflow = 'visible';
+        }
+
+        function clearDescriptionAnimationState(desc) {
+            var timeoutId = desc.getAttribute('data-transition-timeout');
+            if (timeoutId) {
+                window.clearTimeout(Number(timeoutId));
+                desc.removeAttribute('data-transition-timeout');
+            }
+            desc.style.maxHeight = '';
+            desc.style.transition = '';
+        }
+
+        function measureCollapsedHeight(desc) {
+            var clone = desc.cloneNode(true);
+            var width = desc.getBoundingClientRect().width;
+            applyCollapsedDescription(clone);
+            clone.style.position = 'absolute';
+            clone.style.visibility = 'hidden';
+            clone.style.pointerEvents = 'none';
+            clone.style.left = '-9999px';
+            clone.style.top = '0';
+            clone.style.width = width + 'px';
+            clone.style.maxHeight = '';
+            clone.style.transition = 'none';
+            document.body.appendChild(clone);
+            var h = clone.getBoundingClientRect().height;
+            document.body.removeChild(clone);
+            return h;
+        }
+
+        function measureExpandedHeight(desc) {
+            var clone = desc.cloneNode(true);
+            var width = desc.getBoundingClientRect().width;
+            applyExpandedDescription(clone);
+            clone.style.position = 'absolute';
+            clone.style.visibility = 'hidden';
+            clone.style.pointerEvents = 'none';
+            clone.style.left = '-9999px';
+            clone.style.top = '0';
+            clone.style.width = width + 'px';
+            clone.style.maxHeight = '';
+            clone.style.transition = 'none';
+            document.body.appendChild(clone);
+            var h = clone.getBoundingClientRect().height;
+            document.body.removeChild(clone);
+            return h;
+        }
+
+        function isDescriptionTruncated(desc) {
+            var collapsedHeight = measureCollapsedHeight(desc);
+            var expandedHeight = measureExpandedHeight(desc);
+            var lineHeight = parseFloat(window.getComputedStyle(desc).lineHeight) || 16;
+            var threshold = Math.max(2, lineHeight * 0.35);
+            return expandedHeight - collapsedHeight > threshold;
+        }
+
+        function isCardExpandable(card) {
+            return card.getAttribute('data-expandable') === 'true';
+        }
+
+        function setCardExpandable(card, expandable) {
+            card.setAttribute('data-expandable', expandable ? 'true' : 'false');
+            card.classList.toggle('portfolio-card--expandable', expandable);
+        }
+
+        function initializeCardDescription(card) {
+            var description = getCardDescription(card);
+            if (!description) {
+                setCardExpandable(card, false);
+                return;
+            }
+
+            clearDescriptionAnimationState(description);
+
+            applyExpandedDescription(description);
+            var expandable = isDescriptionTruncated(description);
+            setCardExpandable(card, expandable);
+
+            if (expandable) {
+                var shouldStayExpanded = card.classList.contains('portfolio-card--expanded');
+                if (shouldStayExpanded) {
+                    applyExpandedDescription(description);
+                } else {
+                    applyCollapsedDescription(description);
+                }
+            } else {
+                card.classList.remove('portfolio-card--expanded');
+                card.classList.remove('portfolio-card--pinned');
+                applyExpandedDescription(description);
+            }
+        }
+
+        function animateDescription(desc, expand) {
+            clearDescriptionAnimationState(desc);
+
+            if (prefersReducedMotion) {
+                if (expand) {
+                    applyExpandedDescription(desc);
+                } else {
+                    applyCollapsedDescription(desc);
+                }
+                desc.style.maxHeight = '';
+                desc.style.transition = '';
+                return;
+            }
+
+            var startHeight = desc.getBoundingClientRect().height;
+            var endHeight = 0;
+
+            if (expand) {
+                applyExpandedDescription(desc);
+                endHeight = desc.getBoundingClientRect().height;
+            } else {
+                endHeight = measureCollapsedHeight(desc);
+                applyExpandedDescription(desc);
+            }
+
+            desc.style.overflow = 'hidden';
+            desc.style.maxHeight = startHeight + 'px';
+            desc.style.transition = 'none';
+            desc.getBoundingClientRect();
+
+            desc.style.transition = 'max-height 350ms cubic-bezier(0.22, 1, 0.36, 1)';
+            desc.style.maxHeight = endHeight + 'px';
+
+            var timeoutId = window.setTimeout(function () {
+                desc.style.transition = '';
+                desc.style.maxHeight = '';
+                if (expand) {
+                    applyExpandedDescription(desc);
+                    desc.style.overflow = 'visible';
+                } else {
+                    applyCollapsedDescription(desc);
+                    desc.style.overflow = 'hidden';
+                }
+                desc.removeAttribute('data-transition-timeout');
+            }, 380);
+            desc.setAttribute('data-transition-timeout', String(timeoutId));
+        }
+
+        function setCardExpanded(card, expanded) {
+            var description = getCardDescription(card);
+            if (!description) return;
+            if (!isCardExpandable(card)) return;
+            var isExpanded = card.classList.contains('portfolio-card--expanded');
+            if (isExpanded === expanded) return;
+            card.classList.toggle('portfolio-card--expanded', expanded);
+            animateDescription(description, expanded);
+            queueGridLayout();
+        }
+
+        function attachCardInteractions(card) {
+            var hoverTimer = null;
+
+            card.addEventListener('mouseenter', function () {
+                if (!isCardExpandable(card)) return;
+                if (card.classList.contains('portfolio-card--pinned')) return;
+                if (hoverTimer) window.clearTimeout(hoverTimer);
+                hoverTimer = window.setTimeout(function () {
+                    setCardExpanded(card, true);
+                }, 3000);
+            });
+
+            card.addEventListener('mouseleave', function () {
+                if (hoverTimer) {
+                    window.clearTimeout(hoverTimer);
+                    hoverTimer = null;
+                }
+                if (!isCardExpandable(card)) return;
+                if (!card.classList.contains('portfolio-card--pinned') && card.classList.contains('portfolio-card--expanded')) {
+                    setCardExpanded(card, false);
+                }
+            });
+
+            card.addEventListener('click', function (e) {
+                if (e.target.closest('a, button')) return;
+                if (!isCardExpandable(card)) return;
+                var pinned = card.classList.contains('portfolio-card--pinned');
+                card.classList.toggle('portfolio-card--pinned', !pinned);
+                setCardExpanded(card, !pinned);
+            });
+        }
+
+        function handlePillClick(e) {
+            var pill = e.target.closest('.portfolio-pill');
+            if (!pill) return;
+            e.preventDefault();
+            var filter = (pill.getAttribute('data-filter') || '').trim();
+            applyFilter(filter);
+        }
+
+        function handleCardTagClick(e) {
+            var btn = e.target.closest('.portfolio-card-tag');
+            if (!btn) return;
+            e.preventDefault();
+            var filter = (btn.getAttribute('data-filter') || '').trim();
+            applyFilter(filter);
+        }
+
+        pills.forEach(function (pill) {
+            pill.addEventListener('click', handlePillClick);
+        });
+        cardTags.forEach(function (btn) {
+            btn.addEventListener('click', handleCardTagClick);
+        });
+
+        function initializeAllCardDescriptions() {
+            getCards().forEach(function (card) {
+                initializeCardDescription(card);
+            });
+        }
+
+        getCards().forEach(function (card) {
+            attachCardInteractions(card);
+            if (resizeObserver) {
+                resizeObserver.observe(card);
+            }
+        });
+        initializeAllCardDescriptions();
+        queueGridLayout();
+
+        var resizeTimer = null;
+        function scheduleDescriptionRecalculation() {
+            if (resizeTimer) window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(function () {
+                window.requestAnimationFrame(function () {
+                    initializeAllCardDescriptions();
+                    queueGridLayout();
+                });
+            }, 180);
+        }
+
+        window.addEventListener('resize', scheduleDescriptionRecalculation);
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', scheduleDescriptionRecalculation);
+        }
+
+        if (initialTag) {
+            applyFilter(initialTag);
+        } else {
+            setActivePill('');
+            filterProjects('');
+        }
+    })();
+    </script>
+</body>
+</html>
