@@ -147,6 +147,9 @@
                     <button type="button" class="portfolio-pill" data-filter="Docker" aria-pressed="false">
                         Docker
                     </button>
+                    <button type="button" class="portfolio-pill" data-filter="Computer Vision" aria-pressed="false">
+                        Computer Vision
+                    </button>
                 </div>
 
                 <ul id="portfolio-grid" class="portfolio-grid list-none p-0 m-0" role="list">
@@ -345,6 +348,32 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Docker" aria-label="Filter by Docker">Docker</button>
                                     </div>
                                     <a href="https://github.com/caiettia/Webpage/tree/main" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View My Personal Site on GitHub">
+                                        <i class="fab fa-github text-base sm:text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Project 10: TideEye: Underwater Visibility -->
+                    <li class="portfolio-card" data-tags="Python,Javascript,AWS,Machine Learning,Docker,Computer Vision">
+                        <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
+                            <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                                <img src="https://raw.githubusercontent.com/caiettia/Webpage/refs/heads/main/webpage/projects/static/projects/images/piercam_example_cv.jfif" alt="TideEye: Underwater Visibility" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex flex-col flex-1 min-h-0 p-4 sm:p-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-surface-900 dark:text-slate-100 mb-1.5 sm:mb-2">TideEye: Underwater Visibility</h2>
+                                <p class="portfolio-card-description text-slate-600 dark:text-slate-300 text-sm sm:text-base">Vis is a full-stack computer vision application that analyzes live underwater camera footage from the Scripps Institution of Oceanography pier in La Jolla, CA to estimate horizontal visibility in real-time using a Beer-Lambert exponential attenuation model fitted across known-distance pier pylons. The system is deployed on a serverless AWS architecture (Lambda, S3, CloudFront, DynamoDB) with a React frontend, automated CI/CD via GitHub Actions, and integrates live oceanographic data from CDIP buoy stations and Open-Meteo to provide divers and researchers with continuously updated visibility forecasts.</p>
+                                <div class="mt-auto pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Javascript" aria-label="Filter by Javascript">Javascript</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="AWS" aria-label="Filter by AWS">AWS</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Machine Learning" aria-label="Filter by Machine Learning">Machine Learning</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Docker" aria-label="Filter by Docker">Docker</button>
+                                        <button type="button" class="portfolio-card-tag" data-filter="Computer Vision" aria-label="Filter by Computer Vision">Computer Vision</button>
+                                    </div>
+                                    <a href="https://github.com/caiettia/Vis" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View TideEye: Underwater Visibility on GitHub">
                                         <i class="fab fa-github text-base sm:text-lg"></i>
                                     </a>
                                 </div>
