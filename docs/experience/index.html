@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Experience — Andrew Caietti</title>
+    <meta name="description" content="Andrew Caietti's personal website — portfolio, experience, and contact. Engineer, surfer, researcher. ML & analytics solutions.">
+    <meta name="keywords" content="Andrew Caietti, portfolio, contact, engineer, machine learning, surfer, researcher, solutions engineer, product management, product">
+    <link rel="icon" type="image/svg+xml" href="/static/projects/images/surfboard.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var key = 'theme-preference';
+            var storedTheme = null;
+            try {
+                storedTheme = window.localStorage.getItem(key);
+            } catch (e) {}
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var shouldUseDark = storedTheme === 'dark' || (!storedTheme && prefersDark);
+            if (shouldUseDark) {
+                root.classList.add('dark');
+            } else {
+                root.classList.remove('dark');
+            }
+        })();
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        surface: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'page-in': 'pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        pageIn: {
+                            '0%': { opacity: '0', transform: 'translateY(12px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/projects/css/site.css">
+</head>
+<body class="antialiased font-sans text-surface-900 bg-white dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+    <header class="header-safe sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 supports-[backdrop-filter]:dark:bg-slate-950/75">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-14 sm:h-16" aria-label="Main navigation">
+            <a href="/" class="flex items-center gap-2 text-surface-900 dark:text-slate-100 font-semibold tracking-tight hover:text-brand-600 transition-colors">
+                <span class="text-lg">Andrew Caietti</span>
+            </a>
+            <div id="nav-backdrop" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm md:hidden opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+            <ul id="nav-menu" class="nav-menu md:ml-auto flex flex-col md:flex-row items-center gap-1 md:gap-0 md:gap-6 py-4 md:py-0 px-4 md:px-0 list-none m-0 fixed md:relative inset-x-0 top-14 md:top-0 z-50 md:z-auto bg-white dark:bg-slate-950 md:bg-transparent md:dark:bg-transparent border-b md:border-b-0 border-slate-200 dark:border-slate-800 md:shadow-none shadow-lg -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out w-full md:w-auto" role="list">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/portfolio/" class="nav-link">Portfolio</a></li>
+                <li><a href="/experience/" class="nav-link">Experience</a></li>
+                <li><a href="/contact/" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="ml-auto md:ml-2 flex items-center gap-1.5 sm:gap-2">
+                <button type="button" id="theme-toggle" class="theme-toggle inline-flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 dark:text-slate-200 hover:bg-surface-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-colors" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+                    <i class="fas fa-moon text-base js-theme-icon-moon" aria-hidden="true"></i>
+                    <i class="fas fa-sun text-base js-theme-icon-sun hidden" aria-hidden="true"></i>
+                </button>
+                <button type="button" id="nav-toggle" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 dark:text-slate-200 hover:bg-surface-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+                    <i class="fas fa-bars text-lg js-nav-icon-open" aria-hidden="true"></i>
+                    <i class="fas fa-times text-lg js-nav-icon-close hidden" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main class="main-safe flex-1 w-full" id="main-content" role="main">
+        <div class="page-wrapper">
+            <div class="experience-page mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                    <aside class="lg:w-80 xl:w-96 shrink-0 space-y-6">
+                        <article class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
+                            <div class="p-6 text-center">
+                                <img src="/static/projects/images/headshot.jpg" alt="Andrew Caietti" class="w-32 h-32 rounded-full object-cover border-2 border-slate-200 dark:border-slate-700 mx-auto mb-4">
+                                <h2 class="text-xl font-semibold text-surface-900 dark:text-slate-100">Andrew Caietti</h2>
+                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mt-1">San Diego</p>
+                                <p class="text-slate-600 dark:text-slate-300 mt-2 text-sm">Analytics and Machine Learning solutions engineer</p>
+                            </div>
+                            <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/70 border-t border-slate-100 dark:border-slate-700">
+                                <h3 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Skills</h3>
+                                <ul class="flex flex-wrap gap-2">
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Python</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Tableau</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">AWS</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">SQL</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Git</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Docker</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">JavaScript</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Node</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">R</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Salesforce</span></li>
+                                    <li><span class="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200">Snowflake</span></li>
+                                </ul>
+                            </div>
+                            <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/70 border-t border-slate-100 dark:border-slate-700">
+                                <h3 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Education</h3>
+                                <div class="flex items-center gap-4">
+                                    <span class="experience-logo-box experience-logo-box--edu shrink-0" aria-hidden="true">
+                                        <img src="/static/projects/images/school.png" alt="" class="experience-logo-img">
+                                    </span>
+                                    <div class="min-w-0">
+                                        <p class="font-semibold text-surface-900 dark:text-slate-100">William & Mary</p>
+                                        <p class="text-sm text-slate-600 dark:text-slate-300">BS in Applied Mathematics</p>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400">Honors, Cum Laude</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <section class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm p-6">
+                            <h3 class="text-sm font-semibold text-surface-900 dark:text-slate-100 mb-4">Volunteer Experience</h3>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3 items-start">
+                                    <span class="experience-logo-box experience-logo-box--svg shrink-0" aria-hidden="true">
+                                        <img src="/static/projects/images/salesforce.svg" alt="" class="experience-logo-img">
+                                    </span>
+                                    <div class="min-w-0">
+                                        <p class="font-medium text-surface-900 dark:text-slate-100 text-sm">Salesforce Foundation</p>
+                                        <p class="text-slate-600 dark:text-slate-300 text-xs mt-0.5">Pro-bono work with Big Picture Learning, architecting AI Agent use case and implementation.</p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3 items-start">
+                                    <span class="experience-logo-box experience-logo-box--img shrink-0" aria-hidden="true">
+                                        <img src="/static/projects/images/upchieve_logo.jpg" alt="" class="experience-logo-img experience-logo-img--cover">
+                                    </span>
+                                    <div class="min-w-0">
+                                        <p class="font-medium text-surface-900 dark:text-slate-100 text-sm">Upchieve</p>
+                                        <p class="text-slate-600 dark:text-slate-300 text-xs mt-0.5">Tutor children virtually from underserved communities in mathematics.</p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3 items-start">
+                                    <span class="experience-logo-box experience-logo-box--round shrink-0" aria-hidden="true">
+                                        <img src="/static/projects/images/wm.png" alt="" class="experience-logo-img experience-logo-img--cover">
+                                    </span>
+                                    <div class="min-w-0">
+                                        <p class="font-medium text-surface-900 dark:text-slate-100 text-sm">William & Mary</p>
+                                        <p class="text-slate-600 dark:text-slate-300 text-xs mt-0.5">Designed and executed orientation program and Model UN conferences for Middle and High school students.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+                    </aside>
+                    <div class="flex-1 min-w-0 experience-timeline-container">
+                        <ul class="experience-timeline relative space-y-0 list-none pl-0">
+                            <li class="relative pl-14 sm:pl-16 pb-12 border-l-2 border-slate-200 border-l-brand-200 first:pt-0 last:pb-0 experience-timeline-item" style="margin-left: -2px;">
+                                <span class="experience-timeline-icon" aria-hidden="true">
+                                    <span class="experience-timeline-icon-inner">
+                                        <img src="/static/projects/images/salesforce.svg" alt="" class="experience-timeline-icon-img" aria-hidden="true">
+                                    </span>
+                                </span>
+                                <div class="pt-0">
+                                    <p class="inline-block text-xs font-medium text-white bg-surface-900 rounded-md px-2.5 py-1 mb-2">August 2021 – Today</p>
+                                    <h3 class="text-xl font-semibold text-surface-900 dark:text-slate-100">Lead Solutions Engineer</h3>
+                                    <p class="text-brand-600 dark:text-brand-300 font-medium mb-3">Salesforce</p>
+                                    <div class="prose prose-slate dark:prose-invert prose-sm max-w-none text-slate-600 dark:text-slate-300 space-y-2">
+                                        <p><strong class="text-surface-800 dark:text-slate-100">Technical Competency</strong><br>Architected analytics and machine learning solutions aligning enterprise customers' business and IT requirements with the Salesforce Suite, integrating with enterprise systems such as Snowflake and Amazon S3.</p>
+                                        <p>Developed LLM-based Agents to increase enterprise customers' case deflection by 32% by optimizing data pipelines and integrating LLM providers, including OpenAI, Anthropic, and custom fine-tuned models.</p>
+                                        <p>Developed Python-based tooling for Solutions and Architect teams to improve data quality of customer-facing product demonstrations through Salesforce APIs.</p>
+                                        <p><strong class="text-surface-800 dark:text-slate-100">Leadership & Collaboration</strong><br>Delivered over $6 million in ACV with +31% YoY growth, contributing to $36 million across Salesforce products.</p>
+                                        <p>Lead our Voice of the Customer program partnering with 10 Product Managers and 45 Solutions Engineers to prioritize product roadmap with customer feedback and quantify product feature requests.</p>
+                                        <p>Produced client workshops, proof of concepts, and product demonstrations for top enterprise and commercial manufacturing, automotive, and energy technical and executive audiences.</p>
+                                        <p>Lead technical enablement internally for over 150 Solutions Engineers on the technical backend and best practices of developing custom machine learning models, data visualization, and LLM-based Agents in Salesforce and Tableau.</p>
+                                        <p><strong class="text-surface-800 dark:text-slate-100">Public Speaking & Thought Leadership</strong><br>Presented at Dreamforce to a developer audience on architecting and building LLM-based Agents in Salesforce.</p>
+                                        <p>Delivered a keynote session at the Tableau Conference to 500+ stakeholders, demonstrating how Agentic Analytics transforms Supply Chain visibility and autonomous decision-making in Manufacturing.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="relative pl-14 sm:pl-16 pb-12 border-l-2 border-slate-200 border-l-brand-200 experience-timeline-item" style="margin-left: -2px;">
+                                <span class="experience-timeline-icon" aria-hidden="true">
+                                    <span class="experience-timeline-icon-inner">
+                                        <img src="/static/projects/images/research.svg" alt="" class="experience-timeline-icon-img" aria-hidden="true">
+                                    </span>
+                                </span>
+                                <div class="pt-0">
+                                    <p class="inline-block text-xs font-medium text-white bg-surface-900 rounded-md px-2.5 py-1 mb-2">October 2018 – May 2021</p>
+                                    <h3 class="text-xl font-semibold text-surface-900 dark:text-slate-100">Research Assistant</h3>
+                                    <p class="text-brand-600 dark:text-brand-300 font-medium mb-3">William & Mary Department of Mathematics</p>
+                                    <div class="prose prose-slate dark:prose-invert prose-sm max-w-none text-slate-600 dark:text-slate-300 space-y-2">
+                                        <p>Leveraged natural language processing techniques to classify text sentiment, optimizing transformer-based model performance by +29% in Python.</p>
+                                        <p>Developed SQLite3 relational database and schema, warehousing more than 50 columns and 400,000 rows of Clinical Trial and Twitter data for use in text classification and general research.</p>
+                                        <p>Applied mathematical models to simulate biological interactions between neurons in Python, analyzing trends in neuronal activity over time in infant mammals with Professor Mainak Patel.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="relative pl-14 sm:pl-16 pb-12 border-l-2 border-slate-200 border-l-brand-200 last:pb-0 experience-timeline-item" style="margin-left: -2px;">
+                                <span class="experience-timeline-icon" aria-hidden="true">
+                                    <span class="experience-timeline-icon-inner">
+                                        <img src="/static/projects/images/tableau.svg" alt="" class="experience-timeline-icon-img" aria-hidden="true">
+                                    </span>
+                                </span>
+                                <div class="pt-0">
+                                    <p class="inline-block text-xs font-medium text-white bg-surface-900 rounded-md px-2.5 py-1 mb-2">May 2020 – August 2020</p>
+                                    <h3 class="text-xl font-semibold text-surface-900 dark:text-slate-100">Solutions Engineer Intern</h3>
+                                    <p class="text-brand-600 dark:text-brand-300 font-medium mb-3">Tableau Software</p>
+                                    <div class="prose prose-slate dark:prose-invert prose-sm max-w-none text-slate-600 dark:text-slate-300 space-y-2">
+                                        <p>Engineered demo data within an Extract, Transform, and Load workflow to curate for visualization in product demos.</p>
+                                        <p>Developed a custom web data connector for flight data using a REST API and Python for a customized product demonstration, standardizing the demonstration for repeat use by the Solutions Organization.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-surface-50 dark:bg-slate-900/60 transition-colors duration-200">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <p>&copy; 2026 Andrew Caietti. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                    <a href="https://github.com/caiettia" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        (function () {
+            if (window.__themeToggleInitialized) return;
+            window.__themeToggleInitialized = true;
+
+            var key = 'theme-preference';
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
+            var moonIcon = document.querySelector('.js-theme-icon-moon');
+            var sunIcon = document.querySelector('.js-theme-icon-sun');
+            var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+            function getStoredTheme() {
+                try {
+                    return window.localStorage.getItem(key);
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function persistTheme(theme) {
+                try {
+                    window.localStorage.setItem(key, theme);
+                } catch (e) {}
+            }
+
+            function getPreferredTheme() {
+                var stored = getStoredTheme();
+                if (stored === 'light' || stored === 'dark') return stored;
+                return media && media.matches ? 'dark' : 'light';
+            }
+
+            function applyTheme(theme, persist) {
+                var dark = theme === 'dark';
+                root.classList.toggle('dark', dark);
+                if (btn) {
+                    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+                    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+                    btn.setAttribute('title', dark ? 'Switch to light mode' : 'Switch to dark mode');
+                }
+                if (moonIcon) moonIcon.classList.toggle('hidden', dark);
+                if (sunIcon) sunIcon.classList.toggle('hidden', !dark);
+                if (persist) persistTheme(theme);
+            }
+
+            applyTheme(getPreferredTheme(), false);
+
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    var next = root.classList.contains('dark') ? 'light' : 'dark';
+                    applyTheme(next, true);
+                });
+            }
+
+            if (media) {
+                var mediaHandler = function () {
+                    var stored = getStoredTheme();
+                    if (stored !== 'light' && stored !== 'dark') {
+                        applyTheme(media.matches ? 'dark' : 'light', false);
+                    }
+                };
+                if (typeof media.addEventListener === 'function') {
+                    media.addEventListener('change', mediaHandler);
+                } else if (typeof media.addListener === 'function') {
+                    media.addListener(mediaHandler);
+                }
+            }
+        })();
+    </script>
+    <script src="/static/projects/js/main.js" defer></script>
+</body>
+</html>

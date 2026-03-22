@@ -1,13 +1,12 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>{% block title %}Andrew Caietti{% endblock %}</title>
+    <title>Contact — Andrew Caietti</title>
     <meta name="description" content="Andrew Caietti's personal website — portfolio, experience, and contact. Engineer, surfer, researcher. ML & analytics solutions.">
     <meta name="keywords" content="Andrew Caietti, portfolio, contact, engineer, machine learning, surfer, researcher, solutions engineer, product management, product">
-    <link rel="icon" type="image/svg+xml" href="{% static 'projects/images/surfboard.svg' %}">
+    <link rel="icon" type="image/svg+xml" href="/static/projects/images/surfboard.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -79,21 +78,20 @@
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'projects/css/site.css' %}">
-    {% block head %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/static/projects/css/site.css">
 </head>
 <body class="antialiased font-sans text-surface-900 bg-white dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
     <header class="header-safe sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 supports-[backdrop-filter]:dark:bg-slate-950/75">
         <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-14 sm:h-16" aria-label="Main navigation">
-            <a href="{% url 'default' %}" class="flex items-center gap-2 text-surface-900 dark:text-slate-100 font-semibold tracking-tight hover:text-brand-600 transition-colors">
+            <a href="/" class="flex items-center gap-2 text-surface-900 dark:text-slate-100 font-semibold tracking-tight hover:text-brand-600 transition-colors">
                 <span class="text-lg">Andrew Caietti</span>
             </a>
             <div id="nav-backdrop" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm md:hidden opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
             <ul id="nav-menu" class="nav-menu md:ml-auto flex flex-col md:flex-row items-center gap-1 md:gap-0 md:gap-6 py-4 md:py-0 px-4 md:px-0 list-none m-0 fixed md:relative inset-x-0 top-14 md:top-0 z-50 md:z-auto bg-white dark:bg-slate-950 md:bg-transparent md:dark:bg-transparent border-b md:border-b-0 border-slate-200 dark:border-slate-800 md:shadow-none shadow-lg -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out w-full md:w-auto" role="list">
-                <li><a href="{% url 'default' %}" class="nav-link">Home</a></li>
-                <li><a href="{% url 'portfolio' %}" class="nav-link">Portfolio</a></li>
-                <li><a href="{% url 'experience' %}" class="nav-link">Experience</a></li>
-                <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/portfolio/" class="nav-link">Portfolio</a></li>
+                <li><a href="/experience/" class="nav-link">Experience</a></li>
+                <li><a href="/contact/" class="nav-link">Contact</a></li>
             </ul>
             <div class="ml-auto md:ml-2 flex items-center gap-1.5 sm:gap-2">
                 <button type="button" id="theme-toggle" class="theme-toggle inline-flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 dark:text-slate-200 hover:bg-surface-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-colors" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
@@ -109,13 +107,49 @@
     </header>
     <main class="main-safe flex-1 w-full" id="main-content" role="main">
         <div class="page-wrapper">
-            {% block content %}{% endblock %}
+            <div class="contact-page-modern mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                    <div>
+                        <h1 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-slate-100 tracking-tight">Contact Me</h1>
+                        <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg">
+                            If you would like to get in touch, please reach out here or on my socials. I look forward to hearing from you.
+                        </p>
+                        <div class="mt-8 flex gap-4">
+                            <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-brand-500 hover:text-white transition-colors" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="https://github.com/caiettia" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-surface-900 dark:hover:bg-brand-500 hover:text-white transition-colors" aria-label="GitHub">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/80 p-6 sm:p-8 shadow-sm">
+                        <form method="post" action="https://formspree.io/f/mleajrzq" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your Name" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-surface-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-shadow">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your email</label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-surface-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-shadow">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Message</label>
+                                <textarea id="message" name="message" required placeholder="Your message..." rows="5" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-surface-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-shadow resize-y"></textarea>
+                            </div>
+                            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-xl text-base font-semibold text-white bg-surface-900 dark:bg-brand-500 hover:bg-surface-800 dark:hover:bg-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-colors">
+                                Send message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-surface-50 dark:bg-slate-900/60 transition-colors duration-200">
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
-                <p>&copy; {% now "Y" %} Andrew Caietti. All rights reserved.</p>
+                <p>&copy; 2026 Andrew Caietti. All rights reserved.</p>
                 <div class="flex items-center gap-6">
                     <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
                     <a href="https://github.com/caiettia" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
@@ -192,7 +226,6 @@
             }
         })();
     </script>
-    <script src="{% static 'projects/js/main.js' %}" defer></script>
-    {% block scripts %}{% endblock %}
+    <script src="/static/projects/js/main.js" defer></script>
 </body>
 </html>
