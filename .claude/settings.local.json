@@ -1,10 +1,1 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -E \"\\\\.\\(html|jsx|tsx|js|vue|svelte\\)$\")",
-      "Bash(grep -r \"tideEye\\\\|TideEye\\\\|tide\" /c/Users/andre/Webpage --include=*.py --include=*.html --include=*.js)",
-      "Bash(grep -r \"demo\\\\|link_url\\\\|project_url\" /c/Users/andre/Webpage --include=*.py)",
-      "Bash(python manage.py migrate projects)"
-    ]
-  }
-}
+
