@@ -12,6 +12,7 @@ class Project(models.Model):
     description = models.TextField()
     github_url = models.URLField()
     image_url = models.URLField(blank=True, null=True)
+    demo_url = models.URLField(blank=True, null=True)
     tags = models.ManyToManyField('Tag', related_name = 'projects', blank=True)
 
     def __str__(self):
