@@ -1,9 +1,30 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Case, When, Value, IntegerField
 from urllib.parse import urlencode
 from .models import Project, Tag
 
 def portfolio(request):
-    projects = Project.objects.prefetch_related('tags').all()
+    prioritized_titles = [
+        'TideEye',
+        'Dude Wheres My Board',
+        'My Personal Site',
+        'WMATA DC Metro Analysis',
+        'Hype Words',
+        'NOAA Waves and Buoys',
+        'Visualizing Bird Migrations',
+        'Regularization Techniques',
+    ]
+    portfolio_order = Case(
+        *[
+            When(title=title, then=Value(index))
+            for index, title in enumerate(prioritized_titles)
+        ],
+        default=Value(len(prioritized_titles)),
+        output_field=IntegerField(),
+    )
+    projects = Project.objects.prefetch_related('tags').annotate(
+        portfolio_order=portfolio_order
+    ).order_by('portfolio_order', 'id')
     tags = Tag.objects.all()
     selected_tag = request.GET.get('tag', '').strip()
     return render(request, 'portfolio.html', {
