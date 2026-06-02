@@ -5,14 +5,17 @@ from .models import Project, Tag
 
 def portfolio(request):
     prioritized_titles = [
-        'TideEye',
-        'Dude Wheres My Board',
+        "Dude, Where's My Board?",
+        'TideEye: Underwater Visibility',
         'My Personal Site',
         'WMATA DC Metro Analysis',
-        'Hype Words',
-        'NOAA Waves and Buoys',
+        'Hype Words: Social Media Mining and Classification',
         'Visualizing Bird Migrations',
+        'NOAA: Waves and Buoys Scraping',
         'Regularization Techniques',
+        'Comparing Regressors',
+        'Music Frequency Analysis',
+        'El Nino/La Nina Time Series Analysis',
     ]
     portfolio_order = Case(
         *[
