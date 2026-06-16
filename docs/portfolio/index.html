@@ -113,7 +113,7 @@
                     <p class="mt-1 sm:mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base">Projects and work across data, ML, and engineering.</p>
                 </header>
 
-                <div class="portfolio-filters flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8" role="group" aria-label="Filter projects by tag">
+                                <div class="portfolio-filters flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8" role="group" aria-label="Filter projects by tag">
                     <button type="button" class="portfolio-pill portfolio-pill--active" data-filter="" aria-pressed="true">
                         All
                     </button>
@@ -155,7 +155,7 @@
                     </button>
                 </div>
 
-                <ul id="portfolio-grid" class="portfolio-grid list-none p-0 m-0" role="list">
+                                <ul id="portfolio-grid" class="portfolio-grid list-none p-0 m-0" role="list">
                     <!-- Project 1: Dude, Where's My Board? -->
                     <li class="portfolio-card" data-tags="Python,Javascript,Machine Learning,Supabase">
                         <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
@@ -173,11 +173,11 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Supabase" aria-label="Filter by Supabase">Supabase</button>
                                     </div>
                                     <div class="flex items-center gap-1.5">
-                                        <a href="https://www.dudewheresmyboard.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="Visit Dude, Where's My Board?">
-                                            <i class="fas fa-arrow-up-right-from-square text-sm sm:text-base"></i>
-                                        </a>
                                         <a href="https://github.com/caiettia/surfshop" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Dude, Where's My Board? on GitHub">
                                             <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                        <a href="https://www.dudewheresmyboard.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="Visit Dude, Where's My Board? live site">
+                                            <i class="fas fa-external-link-alt text-base sm:text-lg"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -203,12 +203,14 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Docker" aria-label="Filter by Docker">Docker</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="Computer Vision" aria-label="Filter by Computer Vision">Computer Vision</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Vis" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View TideEye: Underwater Visibility on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
-                                    <a href="https://vis.acaietti.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="Visit TideEye: Underwater Visibility live site">
-                                        <i class="fas fa-external-link-alt text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Vis" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View TideEye: Underwater Visibility on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                        <a href="https://vis.acaietti.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="Visit TideEye: Underwater Visibility live site">
+                                            <i class="fas fa-external-link-alt text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -230,9 +232,11 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Javascript" aria-label="Filter by Javascript">Javascript</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="Docker" aria-label="Filter by Docker">Docker</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Webpage/tree/main" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View My Personal Site on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Webpage/tree/main" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View My Personal Site on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -254,15 +258,17 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Javascript" aria-label="Filter by Javascript">Javascript</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="node" aria-label="Filter by node">node</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/wmata_metro?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View WMATA DC Metro Analysis on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/wmata_metro?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View WMATA DC Metro Analysis on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
                     </li>
 
-                    <!-- Project 5: Hype Words -->
+                    <!-- Project 5: Hype Words: Social Media Mining and Classification -->
                     <li class="portfolio-card" data-tags="Python,Machine Learning,Transformers,SKLearn">
                         <article class="group flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden shadow-sm hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-500 transition-all duration-300">
                             <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0">
@@ -278,9 +284,11 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Transformers" aria-label="Filter by Transformers">Transformers</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="SKLearn" aria-label="Filter by SKLearn">SKLearn</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Text-Mining" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Hype Words on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Text-Mining" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Hype Words: Social Media Mining and Classification on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -299,9 +307,11 @@
                                     <div class="flex flex-wrap gap-1.5">
                                         <button type="button" class="portfolio-card-tag" data-filter="Kepler.gl" aria-label="Filter by Kepler.gl">Kepler.gl</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Birds-Visualized" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Visualizing Bird Migrations on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Birds-Visualized" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Visualizing Bird Migrations on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -320,9 +330,11 @@
                                     <div class="flex flex-wrap gap-1.5">
                                         <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/WavesPY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View NOAA: Waves and Buoys Scraping on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/WavesPY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View NOAA: Waves and Buoys Scraping on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -342,9 +354,11 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="Machine Learning" aria-label="Filter by Machine Learning">Machine Learning</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Regularization-Techniques" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Regularization Techniques on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Regularization-Techniques" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Regularization Techniques on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -364,9 +378,11 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="Machine Learning" aria-label="Filter by Machine Learning">Machine Learning</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Comparing-Regressors" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Comparing Regressors on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Comparing-Regressors" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Comparing Regressors on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -386,9 +402,11 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="R" aria-label="Filter by R">R</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Frequency-Analysis/blob/main/Audio_Over_Times_Project%20(1).ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Music Frequency Analysis on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Frequency-Analysis/blob/main/Audio_Over_Times_Project%20(1).ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View Music Frequency Analysis on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -408,13 +426,16 @@
                                         <button type="button" class="portfolio-card-tag" data-filter="Python" aria-label="Filter by Python">Python</button>
                                         <button type="button" class="portfolio-card-tag" data-filter="R" aria-label="Filter by R">R</button>
                                     </div>
-                                    <a href="https://github.com/caiettia/Frequency-Analysis/blob/main/caiettia_lab1%20(3).ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View El Nino/La Nina Time Series Analysis on GitHub">
-                                        <i class="fab fa-github text-base sm:text-lg"></i>
-                                    </a>
+                                    <div class="flex items-center gap-1.5">
+                                        <a href="https://github.com/caiettia/Frequency-Analysis/blob/main/caiettia_lab1%20(3).ipynb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-slate-500 dark:text-slate-300 hover:text-surface-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0" aria-label="View El Nino/La Nina Time Series Analysis on GitHub">
+                                            <i class="fab fa-github text-base sm:text-lg"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </article>
                     </li>
+
                 </ul>
 
                 <p id="portfolio-empty" class="portfolio-empty hidden text-center text-slate-500 py-8 sm:py-12" role="status">

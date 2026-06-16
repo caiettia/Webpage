@@ -1,0 +1,149 @@
+{
+  "tag_order": [
+    "Python",
+    "Machine Learning",
+    "Kepler.gl",
+    "AWS",
+    "Javascript",
+    "Transformers",
+    "SKLearn",
+    "R",
+    "node",
+    "Docker",
+    "Computer Vision",
+    "Supabase"
+  ],
+  "projects": [
+    {
+    "title": "Dude, Where's My Board?",
+    "description": "A San Diego surfboard aggregator that scrapes local shops, shaper sites, and marketplaces into a normalized catalog for browsing new and used boards in one place. Built with a Next.js frontend, Python scrapers, Supabase, and LLM-assisted normalization to power search, filters, and inventory freshness.",
+    "image_url": "/static/projects/images/dudewheresmyboard.png",
+    "tags": [
+      "Python",
+      "Javascript",
+      "Machine Learning",
+      "Supabase"
+    ],
+    "github_url": "https://github.com/caiettia/surfshop",
+    "demo_url": "https://www.dudewheresmyboard.com/"
+  },
+    {
+    "title": "TideEye: Underwater Visibility",
+    "description": "Vis is a full-stack computer vision application that analyzes live underwater camera footage from the Scripps Institution of Oceanography pier in La Jolla, CA to estimate horizontal visibility in real-time using a Beer-Lambert exponential attenuation model fitted across known-distance pier pylons. The system is deployed on a serverless AWS architecture (Lambda, S3, CloudFront, DynamoDB) with a React frontend, automated CI/CD via GitHub Actions, and integrates live oceanographic data from CDIP buoy stations and Open-Meteo to provide divers and researchers with continuously updated visibility forecasts.",
+    "image_url": "https://raw.githubusercontent.com/caiettia/Webpage/refs/heads/main/webpage/projects/static/projects/images/piercam_example_cv.jfif",
+    "tags": [
+      "Python",
+      "Javascript",
+      "AWS",
+      "Machine Learning",
+      "Docker",
+      "Computer Vision"
+    ],
+    "github_url": "https://github.com/caiettia/Vis",
+    "demo_url": "https://vis.acaietti.com"
+  },
+    {
+    "title": "My Personal Site",
+    "description": "The site you are on now! Built from the ground up with HTML, CSS, and JavaScript, and hosted on GitHub Pages with Cloudflare as the CDN. Automated deployments via GitHub Actions on every push to main.",
+    "image_url": "https://raw.githubusercontent.com/caiettia/Thesis-Project/refs/heads/main/personalsite.png",
+    "tags": [
+      "Python",
+      "AWS",
+      "Javascript",
+      "Docker"
+    ],
+    "github_url": "https://github.com/caiettia/Webpage/tree/main",
+    "demo_url": null
+  },
+    {
+    "title": "WMATA DC Metro Analysis",
+    "description": "Developed a Websocket off the WMATA API, run in an AWS instance alongside a Javascript-based webpage for live train and bus locations. Lambda functions utilized in tandem with main site to feed route information, timings, and predicted arrivals.",
+    "image_url": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWlkanVrZGZ4ampvNG9tM2xjbXlmeWh4aTN0YXA5a2RxeXF2ZDg4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GDC2i1BRNY6qaYdswH/giphy.gif",
+    "tags": [
+      "Python",
+      "AWS",
+      "Javascript",
+      "node"
+    ],
+    "github_url": "https://github.com/caiettia/wmata_metro?tab=readme-ov-file",
+    "demo_url": null
+  },
+    {
+    "title": "Hype Words: Social Media Mining and Classification",
+    "description": "Utilized web scraping techniques to curate live datasets of social media posts, then exploring classification techniques to understand social media sentiment around Blockchain in Healthcare. Successfully applied a transformer-based approach to text classification using BERT.",
+    "image_url": "https://raw.githubusercontent.com/caiettia/Thesis-Project/main/project5/raw_perc_over_time.png",
+    "tags": [
+      "Python",
+      "Machine Learning",
+      "Transformers",
+      "SKLearn"
+    ],
+    "github_url": "https://github.com/caiettia/Text-Mining",
+    "demo_url": null
+  },
+    {
+    "title": "Visualizing Bird Migrations",
+    "description": "Processing of geojson, csv, and netcdf files to showcase Swainson Hawk migration patterns.",
+    "image_url": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGk4OWw1ZzdpdWlidjA0ZmN0M3ZrazY3d2dncm00eHRvd3oxY2MxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C3pc6elPw27tXxqmOh/giphy.gif",
+    "tags": [
+      "Kepler.gl"
+    ],
+    "github_url": "https://github.com/caiettia/Birds-Visualized",
+    "demo_url": null
+  },
+    {
+    "title": "NOAA: Waves and Buoys Scraping",
+    "description": "Utilize Beautiful Soup to crawl NOAA API endpoints for Buoy and Wave data to then store and visualize on a web-page map via Javascript.",
+    "image_url": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXY1bWVybzk1bXR0OG5wbzQ1a2U0bWF5d3ZnMXpxcnYzOHR5NzE4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BgRsvWCYQBWCQ57wrv/giphy.gif",
+    "tags": [
+      "Python"
+    ],
+    "github_url": "https://github.com/caiettia/WavesPY",
+    "demo_url": null
+  },
+    {
+    "title": "Regularization Techniques",
+    "description": "An exploration of regularization techniques from Ridge to LASSO to SCAD, on Forest Fires, Boston Housing, and randomly generated datasets.",
+    "image_url": "https://raw.githubusercontent.com/caiettia/Thesis-Project/main/project2/fire_corr_data.png",
+    "tags": [
+      "Python",
+      "Machine Learning"
+    ],
+    "github_url": "https://github.com/caiettia/Regularization-Techniques",
+    "demo_url": null
+  },
+    {
+    "title": "Comparing Regressors",
+    "description": "Analysis of various regression approaches from localized kernel-based regression (LOWESS) to neural networks in their efficacy on predicting Boston Housing Prices.",
+    "image_url": "https://raw.githubusercontent.com/caiettia/Thesis-Project/main/all_reg_together.png",
+    "tags": [
+      "Python",
+      "Machine Learning"
+    ],
+    "github_url": "https://github.com/caiettia/Comparing-Regressors",
+    "demo_url": null
+  },
+    {
+    "title": "Music Frequency Analysis",
+    "description": "A frequency exploration of songs from 1791, 1976, and 2021. Spectrographic analysis is done to see the differences between these three eras and genres.",
+    "image_url": "https://raw.githubusercontent.com/caiettia/Frequency-Analysis/refs/heads/main/ave_spectrogram_diff.PNG",
+    "tags": [
+      "Python",
+      "R"
+    ],
+    "github_url": "https://github.com/caiettia/Frequency-Analysis/blob/main/Audio_Over_Times_Project%20(1).ipynb",
+    "demo_url": null
+  },
+    {
+    "title": "El Nino/La Nina Time Series Analysis",
+    "description": "An exploration of how the El Nino Southern Oscillation (ENSO) can have public health implications globally, with analysis done using spectral density, periodograms, and autocorrelation function plots.",
+    "image_url": "https://raw.githubusercontent.com/caiettia/Frequency-Analysis/refs/heads/main/6874747elninoninaanalysis.png",
+    "tags": [
+      "Python",
+      "R"
+    ],
+    "github_url": "https://github.com/caiettia/Frequency-Analysis/blob/main/caiettia_lab1%20(3).ipynb",
+    "demo_url": null
+  }
+  ]
+}
