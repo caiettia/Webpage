@@ -45,7 +45,7 @@
     {
     "title": "World Cup Tracker",
     "description": "A World Cup prediction-pool tracker that replaces manual spreadsheet scoring with a repeatable Python pipeline and a static React frontend. It syncs tournament standings, scores each entrant's group and knockout picks, generates leaderboard snapshots as JSON, and presents live leaderboard, bracket, and third-place race views in a mobile-friendly UI.",
-    "image_url": "/static/projects/images/worldcuptracker.png",
+    "image_url": "/static/projects/images/worldcuptracker-screenshot.png",
     "tags": [
       "Python",
       "Javascript"
