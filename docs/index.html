@@ -62,6 +62,7 @@
                     animation: {
                         'page-in': 'pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards',
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'marquee': 'marquee 55s linear infinite',
                     },
                     keyframes: {
                         pageIn: {
@@ -71,6 +72,10 @@
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         },
                     },
                 },
@@ -88,7 +93,7 @@
             </a>
             <div id="nav-backdrop" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm md:hidden opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
             <ul id="nav-menu" class="nav-menu md:ml-auto flex flex-col md:flex-row items-center gap-1 md:gap-0 md:gap-6 py-4 md:py-0 px-4 md:px-0 list-none m-0 fixed md:relative inset-x-0 top-14 md:top-0 z-50 md:z-auto bg-white dark:bg-slate-950 md:bg-transparent md:dark:bg-transparent border-b md:border-b-0 border-slate-200 dark:border-slate-800 md:shadow-none shadow-lg -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out w-full md:w-auto" role="list">
-                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/" class="nav-link nav-link--active">Home<span class="nav-link-underline" aria-hidden="true"></span></a></li>
                 <li><a href="/portfolio/" class="nav-link">Portfolio</a></li>
                 <li><a href="/experience/" class="nav-link">Experience</a></li>
                 <li><a href="/contact/" class="nav-link">Contact</a></li>
@@ -107,29 +112,257 @@
     </header>
     <main class="main-safe flex-1 w-full" id="main-content" role="main">
         <div class="page-wrapper">
-            <section class="hero-safe relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 bg-[url('https://raw.githubusercontent.com/caiettia/personal-site-work/refs/heads/main/img/header.jpg')] bg-cover bg-center bg-no-repeat" aria-hidden="true"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/60 dark:hidden" aria-hidden="true"></div>
-                <div class="absolute inset-0 hidden dark:block bg-gradient-to-b from-slate-950/80 via-slate-950/65 to-slate-950/85" aria-hidden="true"></div>
-                <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 text-center">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-surface-900 dark:text-slate-100 mb-3">
-                        Andrew Caietti
-                    </h1>
-                    <p class="text-xl sm:text-2xl text-brand-600 dark:text-brand-300 font-semibold mb-4">
-                        Solutions Engineer, Surfer.
-                    </p>
-                    <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
-                        I focus on analytics, ML, and customer-facing AI systems for the enterprise.
-                    </p>
-                    <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
-                        <a href="/portfolio/" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-base font-semibold text-white bg-surface-900 dark:bg-brand-500 shadow-lg shadow-slate-900/25 hover:bg-surface-800 dark:hover:bg-brand-400 hover:shadow-xl hover:shadow-slate-900/30 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-all duration-200">
-                            View portfolio
+            <section id="home" class="hero-safe relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-[url('/static/projects/images/header.jpg')] bg-cover bg-center bg-no-repeat" aria-hidden="true"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40 dark:from-slate-950/40 dark:via-transparent dark:to-slate-950/50" aria-hidden="true"></div>
+                <div class="relative z-10 mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+                    <div class="inline-block rounded-3xl border border-white/60 dark:border-white/10 bg-white/60 dark:bg-slate-950/55 backdrop-blur-2xl shadow-xl shadow-slate-900/10 px-8 py-10 sm:px-10 sm:py-12">
+                        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-surface-900 dark:text-slate-100 mb-2">
+                            Andrew Caietti
+                        </h1>
+                        <p class="text-lg sm:text-xl font-semibold text-brand-600 dark:text-brand-300 mb-3">
+                            Applied AI &amp; Analytics Solutions Engineer
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-md mx-auto mb-8 leading-relaxed">
+                            <a href="/experience/" class="text-brand-600 dark:text-brand-300 font-bold underline underline-offset-2 hover:text-brand-700 dark:hover:text-brand-200 transition-colors">Top 1%</a>&nbsp;of Solutions Engineers at Salesforce, I help enterprise teams turn complex problems into practical products.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <a href="/experience/" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm sm:text-base font-semibold text-surface-900 dark:text-slate-100 bg-white/70 dark:bg-slate-950/40 border-[1.5px] border-slate-900/25 dark:border-white/35 hover:bg-white/90 dark:hover:bg-slate-950/60 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-all duration-200">
+                                View experience
+                            </a>
+                            <a href="/contact/" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm sm:text-base font-semibold text-surface-900 dark:text-slate-100 bg-white/70 dark:bg-slate-950/40 border-[1.5px] border-slate-900/25 dark:border-white/35 hover:bg-white/90 dark:hover:bg-slate-950/60 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-all duration-200">
+                                Get in touch
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="featured-projects" class="bg-white dark:bg-slate-950">
+                <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6 sm:pb-8">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-surface-900 dark:text-slate-100">Featured Projects</h2>
+                        <a href="/portfolio/" class="text-sm font-semibold text-brand-600 dark:text-brand-300 inline-flex items-center gap-1 hover:gap-1.5 transition-all">
+                            View all <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
                         </a>
-                        <a href="/experience/" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-base font-semibold text-surface-900 dark:text-slate-100 bg-white/95 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-all duration-200">
-                            Experience
+                    </div>
+                </div>
+                <div class="w-full overflow-hidden pb-16 sm:pb-20">
+                    <div class="flex gap-5 sm:gap-6 w-max px-4 sm:px-6 motion-safe:animate-marquee hover:[animation-play-state:paused]">
+                        <a href="https://www.dudewheresmyboard.com/" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="/static/projects/images/dudewheresmyboard.png" alt="Dude, Where's My Board?" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">Dude, Where's My Board?</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">A San Diego surfboard aggregator scraping local shops and marketplaces into one normalized, searchable catalog.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Machine Learning</span>
+                                </div>
+                            </div>
                         </a>
-                        <a href="/contact/" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-base font-semibold text-surface-700 dark:text-slate-200 hover:text-surface-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-colors duration-200">
-                            Get in touch
+                        <a href="https://vis.acaietti.com" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://raw.githubusercontent.com/caiettia/Webpage/refs/heads/main/webpage/projects/static/projects/images/piercam_example_cv.jfif" alt="TideEye: Underwater Visibility" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">TideEye: Underwater Visibility</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Computer vision system estimating real-time ocean visibility from a live pier camera, deployed serverless on AWS.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">AWS</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://worldcup.acaietti.com/" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="/static/projects/images/worldcuptracker-screenshot.png" alt="World Cup Tracker" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">World Cup Tracker</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">A prediction-pool tracker replacing manual spreadsheets with automated scoring and a live leaderboard.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/Webpage/tree/main" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/refs/heads/main/personalsite.png" alt="My Personal Site" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">My Personal Site</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">The site you're on now — built with HTML, CSS, and JavaScript, hosted on GitHub Pages with Cloudflare as the CDN.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">AWS</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/wmata_metro?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWlkanVrZGZ4ampvNG9tM2xjbXlmeWh4aTN0YXA5a2RxeXF2ZDg4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GDC2i1BRNY6qaYdswH/giphy.gif" alt="WMATA DC Metro Analysis" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">WMATA DC Metro Analysis</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">A WebSocket service on the WMATA API feeding a live train and bus location map, running on AWS.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">AWS</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/Text-Mining" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/main/project5/raw_perc_over_time.png" alt="Hype Words: Social Media Mining" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">Hype Words: Social Media Mining</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Scraped social media datasets and applied a transformer-based (BERT) model to text classification.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Machine Learning</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Transformers</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/Birds-Visualized" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGk4OWw1ZzdpdWlidjA0ZmN0M3ZrazY3d2dncm00eHRvd3oxY2MxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C3pc6elPw27tXxqmOh/giphy.gif" alt="Visualizing Bird Migrations" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">Visualizing Bird Migrations</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Processed geojson, CSV, and NetCDF files to visualize Swainson Hawk migration patterns.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Kepler.gl</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/WavesPY" target="_blank" rel="noopener noreferrer" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXY1bWVybzk1bXR0OG5wbzQ1a2U0bWF5d3ZnMXpxcnYzOHR5NzE4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BgRsvWCYQBWCQ57wrv/giphy.gif" alt="NOAA: Waves and Buoys Scraping" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">NOAA: Waves and Buoys Scraping</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Crawled NOAA API endpoints for buoy and wave data, storing and visualizing it on a JavaScript map.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.dudewheresmyboard.com/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="/static/projects/images/dudewheresmyboard.png" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">Dude, Where's My Board?</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">A San Diego surfboard aggregator scraping local shops and marketplaces into one normalized, searchable catalog.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Machine Learning</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://vis.acaietti.com" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://raw.githubusercontent.com/caiettia/Webpage/refs/heads/main/webpage/projects/static/projects/images/piercam_example_cv.jfif" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">TideEye: Underwater Visibility</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Computer vision system estimating real-time ocean visibility from a live pier camera, deployed serverless on AWS.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">AWS</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://worldcup.acaietti.com/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="/static/projects/images/worldcuptracker-screenshot.png" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">World Cup Tracker</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">A prediction-pool tracker replacing manual spreadsheets with automated scoring and a live leaderboard.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/Webpage/tree/main" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/refs/heads/main/personalsite.png" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">My Personal Site</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">The site you're on now — built with HTML, CSS, and JavaScript, hosted on GitHub Pages with Cloudflare as the CDN.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">AWS</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/wmata_metro?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWlkanVrZGZ4ampvNG9tM2xjbXlmeWh4aTN0YXA5a2RxeXF2ZDg4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GDC2i1BRNY6qaYdswH/giphy.gif" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">WMATA DC Metro Analysis</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">A WebSocket service on the WMATA API feeding a live train and bus location map, running on AWS.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">AWS</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Javascript</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/Text-Mining" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://raw.githubusercontent.com/caiettia/Thesis-Project/main/project5/raw_perc_over_time.png" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">Hype Words: Social Media Mining</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Scraped social media datasets and applied a transformer-based (BERT) model to text classification.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Machine Learning</span>
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Transformers</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/Birds-Visualized" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGk4OWw1ZzdpdWlidjA0ZmN0M3ZrazY3d2dncm00eHRvd3oxY2MxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C3pc6elPw27tXxqmOh/giphy.gif" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">Visualizing Bird Migrations</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Processed geojson, CSV, and NetCDF files to visualize Swainson Hawk migration patterns.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Kepler.gl</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/caiettia/WavesPY" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="flex-none w-72 sm:w-80 block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-brand-300 dark:hover:border-brand-700 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-200">
+                            <div class="w-full aspect-video overflow-hidden bg-surface-200 dark:bg-slate-800">
+                                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXY1bWVybzk1bXR0OG5wbzQ1a2U0bWF5d3ZnMXpxcnYzOHR5NzE4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BgRsvWCYQBWCQ57wrv/giphy.gif" alt="" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-base font-semibold text-surface-900 dark:text-slate-100 mb-1.5">NOAA: Waves and Buoys Scraping</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Crawled NOAA API endpoints for buoy and wave data, storing and visualizing it on a JavaScript map.</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3.5">
+                                    <span class="inline-flex px-2.5 py-1 rounded-md text-xs font-medium bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200">Python</span>
+                                </div>
+                            </div>
                         </a>
                     </div>
                 </div>
