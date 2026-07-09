@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <style>
+        body { margin: 0; }
+        * { box-sizing: border-box; }
+        a { text-decoration: none; }
+        @keyframes marqueeScroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+    </style>
+</helmet>
+
+<div style="{{ pageStyle }}">
+
+    <!-- HEADER -->
+    <header style="{{ headerStyle }}">
+        <nav style="max-width:1152px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 24px;height:64px;">
+            <a href="#" style="{{ logoLinkStyle }}">Andrew Caietti</a>
+            <div style="display:flex;align-items:center;gap:20px;">
+                <ul style="display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0;">
+                    <li><a href="#home" style="{{ navLinkActiveStyle }}">Home<span style="{{ navActiveDotStyle }}"></span></a></li>
+                    <li><a href="#portfolio" style="{{ navLinkStyle }}">Portfolio</a></li>
+                    <li><a href="#experience" style="{{ navLinkStyle }}">Experience</a></li>
+                    <li><a href="#contact" style="{{ navLinkStyle }}">Contact</a></li>
+                </ul>
+                <button type="button" onclick="{{ toggleDark }}" style="{{ themeToggleStyle }}" aria-label="Toggle dark mode">
+                    <i class="{{ themeIconClass }}" style="font-size:15px;"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO + PROOF POINTS: shared background image -->
+        <div style="{{ combinedBgWrapperStyle }}">
+            <div style="{{ combinedBgImageStyle }}"></div>
+
+            <section id="home" style="{{ heroSectionStyle }}">
+                <div style="max-width:640px;margin:0 auto;padding:0 24px;text-align:center;">
+                    <div style="{{ heroGlassPanelStyle }}">
+                        <h1 style="{{ heroNameStyle }}">Andrew Caietti</h1>
+                        <p style="{{ heroTaglineStyle }}">Applied AI &amp; Analytics Solutions Engineer</p>
+                        <p style="{{ heroSubStyle }}"><a href="#experience" style="color: rgb(2, 132, 199); font-weight: 700; text-decoration: underline; text-underline-offset: 2px;">Top 1%</a>&nbsp;of Solutions Engineers at Salesforce, I help enterprise teams turn complex problems into practical products.</p>
+                        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+                            <a href="#experience" style="{{ ctaEvenStyle }}">View experience</a>
+                            <a href="#contact" style="{{ ctaEvenStyle }}">Get in touch</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- FEATURED PROJECTS -->
+        <section id="portfolio" style="{{ featuredSectionStyle }}">
+            <div style="max-width:1152px;margin:0 auto;padding:64px 0 40px;">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:32px;padding:0 24px;">
+                    <h2 style="{{ sectionHeadingStyle }}">Featured Projects</h2>
+                    <a href="#portfolio-full" style="{{ viewAllLinkStyle }}">View all <i class="fas fa-arrow-right" style="font-size:12px;margin-left:4px;"></i></a>
+                </div>
+            </div>
+            <div style="width:100%;overflow:hidden;">
+                <div style="{{ marqueeTrackStyle }}" style-hover="animation-play-state:paused;">
+                    <sc-for list="{{ marqueeProjects }}" as="proj" hint-placeholder-count="6">
+                        <a href="{{ proj.link }}" target="_blank" rel="noopener noreferrer" style="{{ projectCardStyle }}">
+                            <div style="width:100%;aspect-ratio:16/9;overflow:hidden;background:#e2e8f0;">
+                                <img src="{{ proj.image }}" alt="{{ proj.title }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+                            </div>
+                            <div style="padding:20px;">
+                                <h3 style="{{ projectTitleStyle }}">{{ proj.title }}</h3>
+                                <p style="{{ projectDescStyle }}">{{ proj.desc }}</p>
+                                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;">
+                                    <sc-for list="{{ proj.tags }}" as="tag" hint-placeholder-count="3">
+                                        <span style="{{ tagChipStyle }}">{{ tag }}</span>
+                                    </sc-for>
+                                </div>
+                            </div>
+                        </a>
+                    </sc-for>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIET SIGN-OFF -->
+        <section id="experience" style="{{ closingSectionStyle }}">
+            <div style="max-width:600px;margin:0 auto;padding:56px 24px;text-align:center;">
+                <span id="contact"></span>
+                
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="{{ footerStyle }}">
+        <div style="max-width:1152px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+            <p style="{{ footerTextStyle }}">© 2026 Andrew Caietti. All rights reserved.</p>
+            <div style="display:flex;align-items:center;gap:20px;">
+                <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" rel="noopener noreferrer" style="{{ footerIconStyle }}" aria-label="LinkedIn"><i class="fab fa-linkedin" style="font-size:18px;"></i></a>
+                <a href="https://github.com/caiettia" target="_blank" rel="noopener noreferrer" style="{{ footerIconStyle }}" aria-label="GitHub"><i class="fab fa-github" style="font-size:18px;"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;carouselSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:90,&quot;min&quot;:10,&quot;max&quot;:90,&quot;step&quot;:2,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;s&quot;,&quot;section&quot;:&quot;Featured Projects&quot;}}">
+class Component extends DCLogic {
+  state = { dark: false };
+
+  renderVals() {
+    const dark = this.state.dark;
+    const bg = dark ? '#020617' : '#ffffff';
+    const text = dark ? '#f1f5f9' : '#0f172a';
+    const subtleText = dark ? '#cbd5e1' : '#475569';
+    const mutedText = dark ? '#94a3b8' : '#64748b';
+    const border = dark ? '#1e293b' : '#e2e8f0';
+    const surfaceAlt = dark ? '#0f172a' : '#f8fafc';
+    const cardBg = dark ? '#0f172a' : '#ffffff';
+    const brand600 = dark ? '#7dd3fc' : '#0284c7';
+    const brand500 = '#0ea5e9';
+
+    const fontSans = "'DM Sans', system-ui, sans-serif";
+    const fontMono = "'JetBrains Mono', monospace";
+
+    const featuredProjects = [
+      {
+        title: "Dude, Where's My Board?",
+        image: 'assets/dudewheresmyboard.png',
+        link: 'https://www.dudewheresmyboard.com/',
+        desc: 'A San Diego surfboard aggregator scraping shops and marketplaces into a normalized, searchable catalog.',
+        tags: ['Python', 'Next.js', 'Supabase'],
+      },
+      {
+        title: 'TideEye: Underwater Visibility',
+        image: 'https://raw.githubusercontent.com/caiettia/Webpage/refs/heads/main/webpage/projects/static/projects/images/piercam_example_cv.jfif',
+        link: 'https://vis.acaietti.com',
+        desc: 'Computer vision system estimating real-time ocean visibility from live pier camera footage, deployed serverless on AWS.',
+        tags: ['Computer Vision', 'AWS', 'Python'],
+      },
+      {
+        title: 'World Cup Tracker',
+        image: 'assets/worldcuptracker-screenshot.png',
+        link: 'https://worldcup.acaietti.com/',
+        desc: 'A prediction-pool tracker replacing manual spreadsheets with automated scoring and live leaderboard views.',
+        tags: ['Python', 'Javascript'],
+      },
+      {
+        title: 'My Personal Site',
+        image: 'https://raw.githubusercontent.com/caiettia/Thesis-Project/refs/heads/main/personalsite.png',
+        link: 'https://github.com/caiettia/Webpage/tree/main',
+        desc: 'The site you are on now! Built from the ground up with HTML, CSS, and JavaScript, hosted on GitHub Pages with Cloudflare as the CDN.',
+        tags: ['Python', 'AWS', 'Docker'],
+      },
+      {
+        title: 'WMATA DC Metro Analysis',
+        image: 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWlkanVrZGZ4ampvNG9tM2xjbXlmeWh4aTN0YXA5a2RxeXF2ZDg4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GDC2i1BRNY6qaYdswH/giphy.gif',
+        link: 'https://github.com/caiettia/wmata_metro?tab=readme-ov-file',
+        desc: 'A Websocket off the WMATA API, run in an AWS instance alongside a Javascript-based webpage for live train and bus locations.',
+        tags: ['Python', 'AWS', 'node'],
+      },
+      {
+        title: 'Hype Words: Social Media Mining',
+        image: 'https://raw.githubusercontent.com/caiettia/Thesis-Project/main/project5/raw_perc_over_time.png',
+        link: 'https://github.com/caiettia/Text-Mining',
+        desc: 'Web scraping to curate live social media datasets, then applying a transformer-based approach (BERT) to text classification.',
+        tags: ['Python', 'Machine Learning', 'Transformers'],
+      },
+      {
+        title: 'Visualizing Bird Migrations',
+        image: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGk4OWw1ZzdpdWlidjA0ZmN0M3ZrazY3d2dncm00eHRvd3oxY2MxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C3pc6elPw27tXxqmOh/giphy.gif',
+        link: 'https://github.com/caiettia/Birds-Visualized',
+        desc: 'Processing geojson, csv, and netcdf files to showcase Swainson Hawk migration patterns.',
+        tags: ['Kepler.gl'],
+      },
+      {
+        title: 'NOAA: Waves and Buoys Scraping',
+        image: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXY1bWVybzk1bXR0OG5wbzQ1a2U0bWF5d3ZnMXpxcnYzOHR5NzE4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BgRsvWCYQBWCQ57wrv/giphy.gif',
+        link: 'https://github.com/caiettia/WavesPY',
+        desc: 'Beautiful Soup crawling NOAA API endpoints for Buoy and Wave data, stored and visualized on a webpage map via Javascript.',
+        tags: ['Python'],
+      },
+    ];
+    const marqueeProjects = [...featuredProjects, ...featuredProjects];
+    const reduceMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    return {
+      pageStyle: `font-family:${fontSans};background:${bg};color:${text};min-height:100vh;transition:background 0.2s,color 0.2s;`,
+
+      headerStyle: `position:sticky;top:0;z-index:50;width:100%;border-bottom:1px solid ${border};background:${dark ? 'rgba(2,6,23,0.85)' : 'rgba(255,255,255,0.85)'};backdrop-filter:blur(16px);`,
+      logoLinkStyle: `color:${text};font-weight:600;font-size:17px;letter-spacing:-0.01em;`,
+      navLinkStyle: `display:block;padding:8px 14px;border-radius:8px;color:${subtleText};font-weight:500;font-size:14px;`,
+      navLinkActiveStyle: `display:block;position:relative;padding:8px 14px;border-radius:8px;color:${brand600};font-weight:600;font-size:14px;`,
+      navActiveDotStyle: `display:block;position:absolute;left:14px;right:14px;bottom:2px;height:2px;background:${brand500};border-radius:2px;`,
+      resumeBtnStyle: `display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:#fff;background:${brand500};`,
+      themeToggleStyle: `display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid ${border};background:transparent;color:${subtleText};cursor:pointer;`,
+      themeIconClass: dark ? 'fas fa-sun' : 'fas fa-moon',
+      toggleDark: () => this.setState(s => ({ dark: !s.dark })),
+
+      combinedBgWrapperStyle: `position:relative;overflow:hidden;`,
+      combinedBgImageStyle: `position:absolute;inset:0;background-image:url('assets/header.jpg');background-size:cover;background-position:center;`,
+      heroSectionStyle: `position:relative;z-index:1;display:flex;align-items:center;justify-content:center;min-height:72vh;padding:64px 0 56px;`,
+      heroGlassPanelStyle: `display:inline-block;background:${dark ? 'rgba(2,6,23,0.55)' : 'rgba(255,255,255,0.6)'};backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid ${dark ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.6)'};border-radius:24px;padding:40px 36px;box-shadow:0 12px 40px rgba(2,6,23,0.15);`,
+      heroNameStyle: `font-size:44px;font-weight:700;letter-spacing:-0.02em;margin:0 0 8px;color:${text};`,
+      heroTaglineStyle: `font-size:20px;font-weight:600;color:${brand600};margin:0 0 12px;`,
+      heroSubStyle: `font-size:17px;color:${subtleText};max-width:480px;margin:0 auto 32px;line-height:1.5;`,
+      inlineHeroLinkStyle: `color:${brand600};font-weight:700;text-decoration:underline;text-underline-offset:2px;`,
+      ctaEvenStyle: `display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-size:15px;font-weight:600;color:${text};background:${dark ? 'rgba(2,6,23,0.4)' : 'rgba(255,255,255,0.7)'};border:1.5px solid ${dark ? 'rgba(255,255,255,0.35)' : 'rgba(15,23,42,0.25)'};`,
+
+      ctaPrimaryStyle: `display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;color:#fff;background:${dark ? brand500 : '#0f172a'};`,
+      ctaSecondaryStyle: `display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;color:${text};background:${dark ? '#0f172a' : 'rgba(255,255,255,0.95)'};border:2px solid ${border};`,
+      ctaSecondaryDarkStyle: `display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;color:#fff;background:transparent;border:2px solid rgba(255,255,255,0.3);`,
+      ctaTertiaryStyle: `display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;color:${subtleText};`,
+
+      featuredSectionStyle: `background:${bg};`,
+      sectionHeadingStyle: `font-size:26px;font-weight:700;letter-spacing:-0.01em;margin:0;color:${text};`,
+      viewAllLinkStyle: `font-size:14px;font-weight:600;color:${brand600};display:inline-flex;align-items:center;`,
+      projectCardStyle: `flex:0 0 320px;width:320px;display:block;background:${cardBg};border:1px solid ${border};border-radius:16px;overflow:hidden;color:${text};`,
+      projectTitleStyle: `font-size:17px;font-weight:600;margin:0 0 8px;color:${text};`,
+      projectDescStyle: `font-size:14px;line-height:1.5;color:${subtleText};margin:0;`,
+      tagChipStyle: `display:inline-flex;padding:4px 9px;border-radius:6px;font-size:11.5px;font-weight:500;background:${dark ? '#0c4a6e' : '#e0f2fe'};color:${dark ? '#e0f2fe' : '#0369a1'};`,
+      featuredProjects,
+      marqueeProjects,
+      marqueeTrackStyle: `display:flex;gap:24px;width:max-content;padding:4px 24px;animation:${reduceMotion ? 'none' : `marqueeScroll ${this.props.carouselSpeed ?? 44}s linear infinite`};`,
+
+      closingSectionStyle: `background:${bg};`,
+      closingSubStyle: `font-size:15px;color:${mutedText};margin:0;line-height:1.6;`,
+      inlineLinkStyle: `color:${brand600};font-weight:600;`,
+
+      footerStyle: `background:${surfaceAlt};border-top:1px solid ${border};`,
+      footerTextStyle: `font-size:13px;color:${mutedText};margin:0;`,
+      footerIconStyle: `color:${mutedText};`,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
