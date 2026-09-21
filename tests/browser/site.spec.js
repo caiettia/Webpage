@@ -46,9 +46,17 @@ test('closed mobile menu is skipped; open menu manages focus and Escape', async 
   await toggle.click();
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('html')).toHaveCSS('overflow', 'hidden');
   await page.setViewportSize({ width: 1440, height: 900 });
+  // Resizing completes before the media-query change event necessarily runs.
+  // An open mobile menu is already non-inert, so that alone cannot signal completion.
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   await expect(page.locator('#nav-menu')).not.toHaveAttribute('inert');
-  expect(await page.evaluate(() => document.documentElement.style.overflow)).toBe('');
+  await expect.poll(() => page.evaluate(() => document.documentElement.style.overflow)).toBe('');
+  await page.setViewportSize({ width: 390, height: 900 });
+  await expect(page.locator('#nav-menu')).toHaveAttribute('inert');
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 });
 
 test('portfolio filters, deep links, empty state, and keyboard expansion', async ({ page }) => {

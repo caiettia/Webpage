@@ -101,5 +101,9 @@ manual workflow runs on `main` build, validate, and upload a Pages artifact; the
 deploy job runs only after all checks pass. Browser traces are retained on
 failure. Hosting remains GitHub Pages, with the existing custom domain/CDN setup.
 
+In the repository's **Settings > Pages**, set **Source** to **GitHub Actions**.
+Publishing directly from the `main` branch's `/docs` folder starts a separate
+deployment that bypasses this workflow's validation gate.
+
 The optional legacy Django checks are separate. See `webpage/README.md` before
 running or modifying that historical application.
