@@ -1,0 +1,15 @@
+{
+  "name": "andrew-caietti-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "python -B scripts/build_site.py && tailwindcss -i src/styles.css -o docs/static/projects/css/site.css --minify",
+    "check": "python -B -m unittest discover -s tests -p test_*.py",
+    "test": "npm run check && playwright test",
+    "preview": "python -B scripts/serve.py"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "tailwindcss": "3.4.17"
+  }
+}

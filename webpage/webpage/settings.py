@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
@@ -135,7 +135,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     # os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'projects/static'),
-    os.path.join(BASE_DIR, 'webpage/projects/static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>World Cup Tracker — Andrew Caietti</title>
+    <meta name="description" content="Automated prediction-pool scoring with leaderboard and bracket views.">
+    <link rel="canonical" href="https://acaietti.com/projects/world-cup-tracker/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Andrew Caietti">
+    <meta property="og:title" content="World Cup Tracker — Andrew Caietti">
+    <meta property="og:description" content="Automated prediction-pool scoring with leaderboard and bracket views.">
+    <meta property="og:url" content="https://acaietti.com/projects/world-cup-tracker/">
+    <meta property="og:image" content="https://acaietti.com/static/projects/images/social-preview.jpg">
+    <meta property="og:image:alt" content="A surfer heading toward the ocean in San Diego">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="World Cup Tracker — Andrew Caietti">
+    <meta name="twitter:description" content="Automated prediction-pool scoring with leaderboard and bracket views.">
+    <meta name="twitter:image" content="https://acaietti.com/static/projects/images/social-preview.jpg">
+    <link rel="icon" type="image/svg+xml" href="/static/projects/images/surfboard.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="/static/projects/js/theme-init.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/projects/css/site.css">
+</head>
+<body class="antialiased font-sans text-surface-900 bg-white dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <header class="header-safe sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 supports-[backdrop-filter]:dark:bg-slate-950/75">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-14 sm:h-16" aria-label="Main navigation">
+            <a href="/" class="flex items-center gap-2 text-surface-900 dark:text-slate-100 font-semibold tracking-tight hover:text-brand-600 transition-colors">
+                <span class="text-lg">Andrew Caietti</span>
+            </a>
+            <div id="nav-backdrop" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm md:hidden opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+            <ul id="nav-menu" class="nav-menu md:ml-auto flex flex-col md:flex-row items-center gap-1 md:gap-0 md:gap-6 py-4 md:py-0 px-4 md:px-0 list-none m-0 fixed md:relative inset-x-0 top-14 md:top-0 z-50 md:z-auto bg-white dark:bg-slate-950 md:bg-transparent md:dark:bg-transparent border-b md:border-b-0 border-slate-200 dark:border-slate-800 md:shadow-none shadow-lg -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out w-full md:w-auto" role="list">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/portfolio/" class="nav-link nav-link--active" aria-current="page">Portfolio</a></li>
+                <li><a href="/experience/" class="nav-link">Experience</a></li>
+                <li><a href="/contact/" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="relative z-50 ml-auto md:ml-2 flex items-center gap-1.5 sm:gap-2">
+                <button type="button" id="theme-toggle" hidden class="theme-toggle inline-flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 dark:text-slate-200 hover:bg-surface-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 transition-colors" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+                    <i class="fas fa-moon text-base js-theme-icon-moon" aria-hidden="true"></i>
+                    <i class="fas fa-sun text-base js-theme-icon-sun hidden" aria-hidden="true"></i>
+                </button>
+                <button type="button" id="nav-toggle" hidden class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-surface-700 dark:text-slate-200 hover:bg-surface-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+                    <i class="fas fa-bars text-lg js-nav-icon-open" aria-hidden="true"></i>
+                    <i class="fas fa-times text-lg js-nav-icon-close hidden" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+<main id="main-content" tabindex="-1" class="main-safe flex-1 w-full">
+    <article class="mx-auto max-w-3xl px-4 sm:px-6 py-10 sm:py-14">
+        <a href="/portfolio/" class="text-brand-700 dark:text-brand-300 underline underline-offset-4">Back to portfolio</a>
+        <h1 class="text-3xl sm:text-4xl font-bold mt-6 mb-4">World Cup Tracker</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-300 mb-6">Automated prediction-pool scoring with leaderboard and bracket views.</p>
+        <img src="/static/projects/images/world-cup-tracker.webp" alt="World Cup Tracker" width="800" height="450" class="w-full aspect-video object-cover rounded-2xl" fetchpriority="high">
+        <section class="mt-8"><h2 class="text-xl font-semibold mb-3">The problem</h2><p class="text-slate-600 dark:text-slate-300 leading-relaxed">Manually scoring tournament prediction pools in spreadsheets makes standings and bracket updates repetitive.</p></section><section class="mt-8"><h2 class="text-xl font-semibold mb-3">What I built</h2><p class="text-slate-600 dark:text-slate-300 leading-relaxed">I built a Python pipeline to sync standings, score group and knockout picks, and generate JSON leaderboard snapshots for a static React frontend.</p></section><section class="mt-8"><h2 class="text-xl font-semibold mb-3">The result</h2><p class="text-slate-600 dark:text-slate-300 leading-relaxed">Entrants can browse the leaderboard, bracket, and third-place race through one mobile-friendly interface.</p></section>
+        <div class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-700"><div class="flex flex-wrap gap-x-4 gap-y-1"><a href="https://worldcup.acaietti.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center min-h-11 text-sm font-semibold text-brand-700 dark:text-brand-300 underline underline-offset-4" aria-label="Live site: World Cup Tracker (opens in new tab)">Live site<span class="sr-only"> (opens in new tab)</span></a>
+<a href="https://github.com/caiettia/worldcuptracker" target="_blank" rel="noopener noreferrer" class="inline-flex items-center min-h-11 text-sm font-semibold text-brand-700 dark:text-brand-300 underline underline-offset-4" aria-label="Source code: World Cup Tracker (opens in new tab)">Source code<span class="sr-only"> (opens in new tab)</span></a></div></div>
+    </article>
+</main>
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-surface-50 dark:bg-slate-900/60 transition-colors duration-200">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <p>&copy; 2026 Andrew Caietti. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.linkedin.com/in/andrew-caietti-817a78177/" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                    <a href="https://github.com/caiettia" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 transition-colors" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/projects/js/main.js" defer></script>
+
+</body>
+</html>

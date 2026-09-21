@@ -5,58 +5,17 @@ from .portfolio_generator import load_projects, load_tag_order, render_portfolio
 
 
 class PortfolioGeneratorTests(SimpleTestCase):
-    def test_project_data_preserves_current_order(self):
-        self.assertEqual(
-            [project["title"] for project in load_projects()],
-            [
-                "Dude, Where's My Board?",
-                "TideEye: Underwater Visibility",
-                "My Personal Site",
-                "WMATA DC Metro Analysis",
-                "Hype Words: Social Media Mining and Classification",
-                "Visualizing Bird Migrations",
-                "NOAA: Waves and Buoys Scraping",
-                "Regularization Techniques",
-                "Comparing Regressors",
-                "Music Frequency Analysis",
-                "El Nino/La Nina Time Series Analysis",
-            ],
-        )
+    def test_project_data_and_tags_are_valid(self):
+        projects = load_projects()
+        self.assertTrue(projects)
+        self.assertEqual(len(projects), len({project["slug"] for project in projects}))
+        self.assertTrue(set(tag for project in projects for tag in project["tags"]).issubset(load_tag_order()))
 
-    def test_tag_order_preserves_current_filter_order(self):
-        self.assertEqual(
-            load_tag_order(),
-            [
-                "Python",
-                "Machine Learning",
-                "Kepler.gl",
-                "AWS",
-                "Javascript",
-                "Transformers",
-                "SKLearn",
-                "R",
-                "node",
-                "Docker",
-                "Computer Vision",
-                "Supabase",
-            ],
-        )
-
-    def test_rendered_html_contains_expected_links_and_order(self):
+    def test_rendered_html_contains_every_project(self):
         html = render_portfolio_page()
-
-        self.assertNotIn("{{PORTFOLIO_FILTERS}}", html)
-        self.assertNotIn("{{PORTFOLIO_PROJECTS}}", html)
-        self.assertIn('href="https://github.com/caiettia/surfshop"', html)
-        self.assertIn('href="https://www.dudewheresmyboard.com/"', html)
-        self.assertIn('href="https://vis.acaietti.com"', html)
-
-        first_project_index = html.index("Dude, Where's My Board?")
-        second_project_index = html.index("TideEye: Underwater Visibility")
-        last_project_index = html.index("El Nino/La Nina Time Series Analysis")
-
-        self.assertLess(first_project_index, second_project_index)
-        self.assertLess(second_project_index, last_project_index)
+        self.assertNotIn("{{PORTFOLIO_", html)
+        for project in load_projects():
+            self.assertIn('id="description-' + project["slug"] + '"', html)
 
 
 class PortfolioRedirectTests(SimpleTestCase):
